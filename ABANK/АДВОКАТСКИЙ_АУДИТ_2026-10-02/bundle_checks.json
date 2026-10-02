@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-02",
+  "sections": 20,
+  "words": 9485,
+  "branches": 35,
+  "claims": 12,
+  "source_records": 83,
+  "unique_sources": 69,
+  "drafts": 7,
+  "source_hashes_verified": true,
+  "draft_hashes_verified": true,
+  "local_links_valid": true,
+  "archive_crc_valid": true,
+  "archive_file_count": 183,
+  "archive_size": 9811155,
+  "private_keys_excluded": true,
+  "pdfs_reparsed_this_phase": false,
+  "independent_lawyer_review_completed": false,
+  "external_submission_performed": false
+}

@@ -1,0 +1,118 @@
+{
+  "documents": 7,
+  "rendered_pages": 19,
+  "commission_rows": 96,
+  "commission_total": "7170.44",
+  "local_links_ok": true,
+  "actual_location_not_disclosed_in_court_texts": true,
+  "archive_files": 26,
+  "archive_crc_ok": true,
+  "archive_excludes_keys_signatures_scripts_and_qa": true,
+  "submitted_to_court": false,
+  "files": [
+    {
+      "path": "roadmap.html",
+      "sha256": "f420e3b69956e61b1e3fe07ae251521a03b784ed3f69ecc6e55e06808b10a8bf"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1b335903fb49da409177cb734e0b28734757609564a4148bea1eb5ffbf421216"
+    },
+    {
+      "path": "ДЛЯ_СЕБЕ\\08_Повний_аудит.md",
+      "sha256": "ac0269bceb72117ef06464f1e33898656a11b1870731e847c5043ceeff913009"
+    },
+    {
+      "path": "ДОДАТКИ\\Квитанція_7900097_09-07-2026.pdf",
+      "sha256": "f4b178f524aad413ec29aa5370fe603d0f1208e6a591bba2ef0ade085e9464a4"
+    },
+    {
+      "path": "ДОДАТКИ\\Картка_руху_22-07-2026.pdf",
+      "sha256": "a5907de0edef2c2f1a32a233d963923da66fae1a307b2a19070aa09fb92e686a"
+    },
+    {
+      "path": "ДО_СУДУ\\01_Ознайомлення_з_відповіддю_банку.docx",
+      "sha256": "6b0a1b2118afe11698ff527c86df7612fc02f67ca6314eb0d68450590032fe97"
+    },
+    {
+      "path": "ДО_СУДУ\\01_Ознайомлення_з_відповіддю_банку.pdf",
+      "sha256": "be6a329b19a7fe13b7d33e49e4049ce0fae9db6a5872a0164eb855b933c849c3"
+    },
+    {
+      "path": "ДО_СУДУ\\01_Ознайомлення_з_відповіддю_банку.txt",
+      "sha256": "b12fe487376935df2ff5e5eaf82e157a5964973ca1dcb1a5d028a74fd3cab3bf"
+    },
+    {
+      "path": "ДО_СУДУ\\02_Уточнені_письмові_пояснення.docx",
+      "sha256": "48d6f94e8d9b9c1b5aa09260be8410a1647209a509da54126b673bb5cce33b54"
+    },
+    {
+      "path": "ДО_СУДУ\\02_Уточнені_письмові_пояснення.pdf",
+      "sha256": "9636f79336f34e37b638cce0aa36ffb08ca08fa84c4f0a4fd0c4559114f29716"
+    },
+    {
+      "path": "ДО_СУДУ\\02_Уточнені_письмові_пояснення.txt",
+      "sha256": "23e5327a4c8f5d6e5d4d6676301d127f0857cf4d387a128e8894d1ae68b4cf30"
+    },
+    {
+      "path": "ДО_СУДУ\\03_Розгляд_раніше_заявлених_клопотань.docx",
+      "sha256": "d4be3f1f3bb8ff377d812abf9c34674fb652bc868140a2a74aad416bb1a84f36"
+    },
+    {
+      "path": "ДО_СУДУ\\03_Розгляд_раніше_заявлених_клопотань.pdf",
+      "sha256": "c847ce89f1665887ba223ab9e719a7dee3ae7423608c518be2f9b83075e7adb7"
+    },
+    {
+      "path": "ДО_СУДУ\\03_Розгляд_раніше_заявлених_клопотань.txt",
+      "sha256": "f4eaec2c3937290db404018e354298fc2818b246f6cc056d29ff29c37cb0243b"
+    },
+    {
+      "path": "ДО_СУДУ\\04_Пояснення_щодо_зустрічного_позову.docx",
+      "sha256": "a463be41ad9e809cc888809113bec113588dafed46d8a7e7df0f1fa638f523ab"
+    },
+    {
+      "path": "ДО_СУДУ\\04_Пояснення_щодо_зустрічного_позову.pdf",
+      "sha256": "e5cd127f294e7cccd6d95b364ada62dc0027ae89cdfda2f620ade98ecc708d83"
+    },
+    {
+      "path": "ДО_СУДУ\\04_Пояснення_щодо_зустрічного_позову.txt",
+      "sha256": "d070af5fe7f873793e589ae8b0a1c9f436ac732dac732a6c92eead628444edf2"
+    },
+    {
+      "path": "ДОДАТКИ\\05_Контрольні_зіставлення.docx",
+      "sha256": "a05bb45d5e0dccb083b716931e3eeaf9ccdf343241732bdfee34ae0f4469ec19"
+    },
+    {
+      "path": "ДОДАТКИ\\05_Контрольні_зіставлення.pdf",
+      "sha256": "87edd4c405d3afb617c54564e3c2d937c4af80f4f388cc903d1189b25a15a6aa"
+    },
+    {
+      "path": "ДОДАТКИ\\05_Контрольні_зіставлення.txt",
+      "sha256": "016ca3c450560eedf8d0df7a857636aef3a21fea79ad4e55ba728e3ff2b67c12"
+    },
+    {
+      "path": "ДОДАТКИ\\06_Деталізація_комісій.docx",
+      "sha256": "a4c02965932bdea66695777fdc04f317183c26fc533e48cd4cd572fc15b5ef77"
+    },
+    {
+      "path": "ДОДАТКИ\\06_Деталізація_комісій.pdf",
+      "sha256": "3bfcc98ea033661b64e68bbdd468f72b9dc15abb689f419bace2f15d894d1c33"
+    },
+    {
+      "path": "ДОДАТКИ\\06_Деталізація_комісій.txt",
+      "sha256": "dfe30e3261e56aaacb678b14e16e2670c9ea1d34590fc18f8f606a1de64c77d1"
+    },
+    {
+      "path": "ДЛЯ_СЕБЕ\\07_Сценарій_репетиції_засідання.docx",
+      "sha256": "cdccb0f8dcd2b07dc25c661900c425fa038e35601a0d2f7031a346199e3ebe04"
+    },
+    {
+      "path": "ДЛЯ_СЕБЕ\\07_Сценарій_репетиції_засідання.pdf",
+      "sha256": "3b26fedb21b58eb3d3633df0c2e8587a49f9a6ce739cdc401acfbebea6e53f01"
+    },
+    {
+      "path": "ДЛЯ_СЕБЕ\\07_Сценарій_репетиції_засідання.txt",
+      "sha256": "7c777c27e00d5cbc918ca98dd792e7c45b66027a9536d75d060c3a8995ce400a"
+    }
+  ]
+}

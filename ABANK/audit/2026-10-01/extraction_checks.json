@@ -1,0 +1,137 @@
+{
+  "ledger_csv_rows": 349,
+  "ledger_pdf_rows": 349,
+  "ledger_numeric_mismatches": [],
+  "tx_csv_rows": 697,
+  "tx_pdf_blocks": 697,
+  "tx_numeric_mismatches": [],
+  "ledger_component_balance_mismatches": [],
+  "positive_own_funds_rows_not_debt_errors": [
+    {
+      "row": 55,
+      "date": "2021-10-02",
+      "difference": "-235.71"
+    },
+    {
+      "row": 56,
+      "date": "2021-10-04",
+      "difference": "-144.81"
+    },
+    {
+      "row": 57,
+      "date": "2021-10-31",
+      "difference": "-144.81"
+    },
+    {
+      "row": 58,
+      "date": "2021-11-30",
+      "difference": "-112.80"
+    },
+    {
+      "row": 98,
+      "date": "2022-09-13",
+      "difference": "-3470.76"
+    },
+    {
+      "row": 99,
+      "date": "2022-09-30",
+      "difference": "-3470.76"
+    },
+    {
+      "row": 100,
+      "date": "2022-10-08",
+      "difference": "-567.01"
+    },
+    {
+      "row": 101,
+      "date": "2022-10-15",
+      "difference": "-522.01"
+    },
+    {
+      "row": 102,
+      "date": "2022-10-16",
+      "difference": "-409.71"
+    },
+    {
+      "row": 103,
+      "date": "2022-10-18",
+      "difference": "-319.41"
+    },
+    {
+      "row": 104,
+      "date": "2022-10-31",
+      "difference": "-319.41"
+    },
+    {
+      "row": 105,
+      "date": "2022-11-30",
+      "difference": "-319.41"
+    },
+    {
+      "row": 106,
+      "date": "2022-12-31",
+      "difference": "-319.41"
+    },
+    {
+      "row": 107,
+      "date": "2023-01-31",
+      "difference": "-319.41"
+    },
+    {
+      "row": 108,
+      "date": "2023-02-28",
+      "difference": "-319.41"
+    },
+    {
+      "row": 109,
+      "date": "2023-03-31",
+      "difference": "-319.41"
+    },
+    {
+      "row": 110,
+      "date": "2023-04-30",
+      "difference": "-319.41"
+    },
+    {
+      "row": 111,
+      "date": "2023-05-31",
+      "difference": "-319.41"
+    },
+    {
+      "row": 114,
+      "date": "2023-07-10",
+      "difference": "-72.19"
+    },
+    {
+      "row": 115,
+      "date": "2023-07-31",
+      "difference": "-72.19"
+    },
+    {
+      "row": 116,
+      "date": "2023-08-11",
+      "difference": "-11.19"
+    },
+    {
+      "row": 117,
+      "date": "2023-08-18",
+      "difference": "-111.19"
+    },
+    {
+      "row": 118,
+      "date": "2023-08-20",
+      "difference": "-67.19"
+    },
+    {
+      "row": 119,
+      "date": "2023-08-21",
+      "difference": "-59.19"
+    },
+    {
+      "row": 120,
+      "date": "2023-08-22",
+      "difference": "-7.19"
+    }
+  ],
+  "scope": "Numeric extraction verification, not proof of contractual validity. Amounts in csv rows match primary PDF fields where recorded as matched. Positive net balances with zero principal include own funds; a simple sum of debt components omits the positive account balance. Two such rows also show interest debited from those own funds."
+}

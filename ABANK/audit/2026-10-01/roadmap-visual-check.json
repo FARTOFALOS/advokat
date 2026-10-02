@@ -1,0 +1,13 @@
+{
+  "desktop": {
+    "width": 1280,
+    "scroll": 1280,
+    "title": "Дорожная карта 2.0 — аудит к 5 октября 2026"
+  },
+  "mobile": {
+    "width": 390,
+    "scroll": 390
+  },
+  "openScenarios": 5,
+  "errors": []
+}

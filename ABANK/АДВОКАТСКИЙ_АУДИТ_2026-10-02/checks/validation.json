@@ -1,0 +1,21 @@
+{
+  "original_file_count": 86,
+  "additional_pdf_count": 1,
+  "source_status_counts": {
+    "text extracted": 77,
+    "auxiliary binary or lock file inventoried": 1,
+    "credential file: content not accessed": 1,
+    "detached signature inventoried; cryptographic verification not performed": 7
+  },
+  "modified_original_ids": [
+    "005",
+    "035"
+  ],
+  "all_other_original_hashes_preserved": true,
+  "original_backups_hash_verified": true,
+  "received_pdf_hash_preserved": true,
+  "roadmap_local_links_valid": true,
+  "live_esits_checked": false,
+  "signatures_cryptographically_verified": false,
+  "personal_key_content_accessed": false
+}

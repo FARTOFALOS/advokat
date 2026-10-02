@@ -1,0 +1,29 @@
+{
+  "desktop": {
+    "width": 1280,
+    "scroll": 1280
+  },
+  "mobile": {
+    "width": 390,
+    "scroll": 390
+  },
+  "filters": [
+    {
+      "name": "Обращения в суд",
+      "count": 4
+    },
+    {
+      "name": "Приложения",
+      "count": 2
+    },
+    {
+      "name": "Для себя",
+      "count": 1
+    },
+    {
+      "name": "Все",
+      "count": 7
+    }
+  ],
+  "errors": []
+}

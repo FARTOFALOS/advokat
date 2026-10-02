@@ -1,0 +1,985 @@
+{
+  "date": "2026-10-02",
+  "source_snapshot": "2026-10-01 + received U01",
+  "source_count": 83,
+  "unique_source_files": 69,
+  "source_records": [
+    {
+      "id": "E003",
+      "original_path": "AGENTS.md",
+      "copy": "sources/E003.md",
+      "text": "texts/E003.txt",
+      "sha256": "a9712daecfc60624bbe0f79b81dd7a7ca905abcb801ac58851ac3f7d30c93e54",
+      "duplicate_of": null,
+      "kind": "Ролевая проектная инструкция; не доказательство юридической квалификации",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E005",
+      "original_path": "STATUS.md",
+      "copy": "sources/E005.md",
+      "text": "texts/E005.txt",
+      "sha256": "c7e8b293864f50b70e6cdcec7212eee832023b47ca5fdeb1b85b6aeaa2ab4151",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E006",
+      "original_path": "База доказів от банка (Додатки до позову)\\analysis_notes.txt",
+      "copy": "sources/E006.txt",
+      "text": "texts/E006.txt",
+      "sha256": "2f73349cfc4630255319c6c8dfc1b46a8996ace9d14d8e07563b165915918ec2",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E007",
+      "original_path": "База доказів от банка (Додатки до позову)\\card_transactions.csv",
+      "copy": "sources/E007.csv",
+      "text": "texts/E007.txt",
+      "sha256": "dde26de7eba1d8bc132c732af59cd180f72dfac71afd5150f54b0e4b15c49d62",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E008",
+      "original_path": "База доказів от банка (Додатки до позову)\\court_fee_payment_p92.txt",
+      "copy": "sources/E008.txt",
+      "text": "texts/E008.txt",
+      "sha256": "46ad357292613bfb8ae145829cb1a7a6130a23032be2496341829c16dbedd72c",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E009",
+      "original_path": "База доказів от банка (Додатки до позову)\\dovidka_karty.txt",
+      "copy": "sources/E009.txt",
+      "text": "texts/E009.txt",
+      "sha256": "a2928759e05ad2dffd0803d2aa40451e3228dce0eec4262bbbad10900dc8ca01",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E010",
+      "original_path": "База доказів от банка (Додатки до позову)\\dovidka_limity.txt",
+      "copy": "sources/E010.txt",
+      "text": "texts/E010.txt",
+      "sha256": "4769fd413f11f35c4f0ca6ad851750bcaf9311f10390c33a8c6df3fce6c86d1c",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E011",
+      "original_path": "База доказів от банка (Додатки до позову)\\edr_bank_registry.txt",
+      "copy": "sources/E011.txt",
+      "text": "texts/E011.txt",
+      "sha256": "2f9ba2ce7d8d15f3675beb9b5769249bff9fd95cff21a831decae3cc63bf2829",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E012",
+      "original_path": "База доказів от банка (Додатки до позову)\\email_proof_p90.txt",
+      "copy": "sources/E012.txt",
+      "text": "texts/E012.txt",
+      "sha256": "84b5a452e2ce9930a7d56173d80847f86d874d0d17113fd48bc81ec71d6a1623",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E013",
+      "original_path": "База доказів от банка (Додатки до позову)\\page14_summary.txt",
+      "copy": "sources/E013.txt",
+      "text": "texts/E013.txt",
+      "sha256": "faee004b5a97f637728f233cbe16e906bd716f3fa557bef98571514275634fe2",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E014",
+      "original_path": "База доказів от банка (Додатки до позову)\\passport_kredytu.txt",
+      "copy": "sources/E014.txt",
+      "text": "texts/E014.txt",
+      "sha256": "4ae1071ff5410d556562b570c9911577499b50012c527f97cc309b82314ac9bd",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E015",
+      "original_path": "База доказів от банка (Додатки до позову)\\rozrahunok_ledger.csv",
+      "copy": "sources/E015.csv",
+      "text": "texts/E015.txt",
+      "sha256": "7151660c744f5a9b2e05bc07265b698cab36d460c827e3ea2d789c7297b51eed",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E016",
+      "original_path": "База доказів от банка (Додатки до позову)\\SAMABWFC10073509345_14_06_2026_08_07_18.pdf",
+      "copy": "sources/E016.pdf",
+      "text": "texts/E016.txt",
+      "sha256": "e9ec3bfce06420518cb0f654eefdf3b682fceeb7a9eadc1a950ac4ab86ff8fb7",
+      "duplicate_of": null,
+      "kind": "Материалы банка",
+      "pages_in_prior_inventory": 12
+    },
+    {
+      "id": "E017",
+      "original_path": "База доказів от банка (Додатки до позову)\\SAMABWFC10073509345_addition_14_06_2026_08_07_21.pdf",
+      "copy": "sources/E017.pdf",
+      "text": "texts/E017.txt",
+      "sha256": "6a902ca9ce430af0984beb23073ecc620373748b577b057201b5c1af36a90ab9",
+      "duplicate_of": null,
+      "kind": "Материалы банка",
+      "pages_in_prior_inventory": 89
+    },
+    {
+      "id": "E018",
+      "original_path": "База доказів от банка (Додатки до позову)\\umovy_ta_pravyla.txt",
+      "copy": "sources/E018.txt",
+      "text": "texts/E018.txt",
+      "sha256": "45a0d844d44c7e255b0a12767852936040fc585169dea80110767806fe3d68b3",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E019",
+      "original_path": "База доказів от банка (Додатки до позову)\\vidpovid_kabinet.txt",
+      "copy": "sources/E019.txt",
+      "text": "texts/E019.txt",
+      "sha256": "e04f80dbbff4fdde43fcf922bbcf7f1201741a29b7eb010d59456d5a91155bc3",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E020",
+      "original_path": "База доказів от банка (Додатки до позову)\\АНАЛІЗ_Додатки_до_позову.md",
+      "copy": "sources/E020.md",
+      "text": "texts/E020.txt",
+      "sha256": "5de6cb396b12de72a3a1c712f22354bdc5fb749f0a86d77e05eb3bdfff5ab41a",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E021",
+      "original_path": "База доказів от банка (Додатки до позову)\\АНАЛІТИЧНЕ_ДОСЛІДЖЕННЯ_за_методикою_11.3_(03.07.2026).md",
+      "copy": "sources/E021.md",
+      "text": "texts/E021.txt",
+      "sha256": "65bbcb425ae9a21ab6a2eb6782ae05939e71bf7f14f10e28aacd2b29984c6eec",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E022",
+      "original_path": "База доказів от банка (Додатки до позову)\\Доброго дня! АТ А - БАНК направляє.txt",
+      "copy": "sources/E022.txt",
+      "text": "texts/E022.txt",
+      "sha256": "bd76b6ca581ba2aac16610effa50b0744a4fcace263570f6a66dd089df445ce7",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E023",
+      "original_path": "База доказів от банка (Додатки до позову)\\Додатки до Позовна заява (Цивільне судочинство) Подольський Андрій Юрійович.pdf",
+      "copy": "sources/E023.pdf",
+      "text": "texts/E023.txt",
+      "sha256": "c237ba13cd6102d322b8cd00e4b7f70b8b6d85f8a3f950602b91049f92d03c9c",
+      "duplicate_of": null,
+      "kind": "Материалы банка",
+      "pages_in_prior_inventory": 92
+    },
+    {
+      "id": "E024",
+      "original_path": "База доказів от банка (Додатки до позову)\\ДОПОВНЕННЯ_до_аналізу_03.07.2026.md",
+      "copy": "sources/E024.md",
+      "text": "texts/E024.txt",
+      "sha256": "9543e085652edc3f98d006f1d94de4662409c06cd04a876107451e0ff7facd34",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E025",
+      "original_path": "встречный иск\\Зустрічний позов (справа 127-20805-26) - ФІНАЛ 09.07.pdf",
+      "copy": "sources/E025.pdf",
+      "text": "texts/E025.txt",
+      "sha256": "02c3e685ef5da42c5c5bb96f4db26a224bfd2b9aee09aae8a6eb3cc0daeb9ddc",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 5
+    },
+    {
+      "id": "E026",
+      "original_path": "встречный иск\\Зустрічний позов (справа 127-20805-26) — ПРОЄКТ v2.docx",
+      "copy": "sources/E026.docx",
+      "text": "texts/E026.txt",
+      "sha256": "584a3aae27d21d5a73a69b05a8a6ba5d1d7627112122fa81fc6eb8643dd6f213",
+      "duplicate_of": null,
+      "kind": "Архив процессуального текста; статус подачи проверяется отдельно",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E027",
+      "original_path": "встречный иск\\Зустрічний позов (справа 127-20805-26) — ФІНАЛ 08.07.docx",
+      "copy": "sources/E027.docx",
+      "text": "texts/E027.txt",
+      "sha256": "8937da9f5be2df7611d5519be8053482041a32487dbbcc9ce39c36718138f87a",
+      "duplicate_of": null,
+      "kind": "Архив процессуального текста; статус подачи проверяется отдельно",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E028",
+      "original_path": "встречный иск\\Зустрічний позов (справа 127-20805-26) — ФІНАЛ 08.07.pdf",
+      "copy": "sources/E028.pdf",
+      "text": "texts/E028.txt",
+      "sha256": "1039544cc9927f8154ca327bbadf702dc20d465899e10188d31bb45da7fcef5c",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 5
+    },
+    {
+      "id": "E029",
+      "original_path": "встречный иск\\Зустрічний позов (справа 127-20805-26) — ФІНАЛ 09.07.docx",
+      "copy": "sources/E029.docx",
+      "text": "texts/E029.txt",
+      "sha256": "0c558f3fff37d5011c5f034c137b88e535dec506461ac67c0b53f5d31d450431",
+      "duplicate_of": null,
+      "kind": "Архив процессуального текста; статус подачи проверяется отдельно",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E030",
+      "original_path": "встречный иск\\Зустрічний позов (справа 127-20805-26) — ФІНАЛ 09.07.pdf",
+      "copy": "sources/E025.pdf",
+      "text": "texts/E030.txt",
+      "sha256": "02c3e685ef5da42c5c5bb96f4db26a224bfd2b9aee09aae8a6eb3cc0daeb9ddc",
+      "duplicate_of": "E025",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 5
+    },
+    {
+      "id": "E031",
+      "original_path": "встречный иск\\Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080.pdf",
+      "copy": "sources/E031.pdf",
+      "text": "texts/E031.txt",
+      "sha256": "f4b178f524aad413ec29aa5370fe603d0f1208e6a591bba2ef0ade085e9464a4",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E032",
+      "original_path": "встречный иск\\Пояснення щодо звільнення від сплати судового збору (справа 127-20805-26).docx",
+      "copy": "sources/E032.docx",
+      "text": "texts/E032.txt",
+      "sha256": "66b9975210c7b195ce72371d2b7e947bd5cc9a1db0cb9b2d725091ce5c7fcae3",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E033",
+      "original_path": "встречный иск\\Пояснення щодо звільнення від сплати судового збору (справа 127-20805-26).pdf",
+      "copy": "sources/E033.pdf",
+      "text": "texts/E033.txt",
+      "sha256": "e64ae21b20baf1d84f178c8617477e2c7d27e72d3fec38b632e68dfa3496ee1e",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 2
+    },
+    {
+      "id": "E034",
+      "original_path": "встречный иск\\Пояснення щодо звільнення від сплати судового збору.pdf",
+      "copy": "sources/E033.pdf",
+      "text": "texts/E034.txt",
+      "sha256": "e64ae21b20baf1d84f178c8617477e2c7d27e72d3fec38b632e68dfa3496ee1e",
+      "duplicate_of": "E033",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 2
+    },
+    {
+      "id": "E035",
+      "original_path": "Дорожня карта 2.0 — дерево сценаріїв (А-Банк).html",
+      "copy": "sources/E035.html",
+      "text": "texts/E035.txt",
+      "sha256": "272c2e04fd15d95835add017d01fc4aa6e7f2591a086d66d9b2c356cb62abf29",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E036",
+      "original_path": "клопотання про витребування доказів\\Картка руху — Клопотання про витребування доказів (подано 22.07.2026).pdf",
+      "copy": "sources/E036.pdf",
+      "text": "texts/E036_visual_observation.txt",
+      "sha256": "a5907de0edef2c2f1a32a233d963923da66fae1a307b2a19070aa09fb92e686a",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 2
+    },
+    {
+      "id": "E037",
+      "original_path": "клопотання про витребування доказів\\Клопотання про витребування доказів (справа 127-20805-26).docx",
+      "copy": "sources/E037.docx",
+      "text": "texts/E037.txt",
+      "sha256": "e29b28f97013689c45f4fb657935ac5c39e6a68189b732f69f9f724b24af958d",
+      "duplicate_of": null,
+      "kind": "Архив процессуального текста; статус подачи проверяется отдельно",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E038",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0001_2026-06-15_Фіксація автоматизованого розподілу справ_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E038.html",
+      "text": "texts/E038.txt",
+      "sha256": "4ccfd9e1e563a4dafaa9639dd33a999bc330a4d874a2fd164a438ad4a7b6d15c",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E039",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0002_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E039.html",
+      "text": "texts/E039.txt",
+      "sha256": "e7adce4bb5985925bdfdb9c7f234507b5c19a705f8fa0f85edb77722daa6951c",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E040",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0002_Д001_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf",
+      "copy": "sources/E016.pdf",
+      "text": "texts/E040.txt",
+      "sha256": "e9ec3bfce06420518cb0f654eefdf3b682fceeb7a9eadc1a950ac4ab86ff8fb7",
+      "duplicate_of": "E016",
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 12
+    },
+    {
+      "id": "E041",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0002_Д002_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf",
+      "copy": "sources/E023.pdf",
+      "text": "texts/E041.txt",
+      "sha256": "c237ba13cd6102d322b8cd00e4b7f70b8b6d85f8a3f950602b91049f92d03c9c",
+      "duplicate_of": "E023",
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 92
+    },
+    {
+      "id": "E042",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0002_Д003_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf",
+      "copy": "sources/E042.pdf",
+      "text": "texts/E042.txt",
+      "sha256": "b0d06c97e14acb5450ef01d88f9a0db5b55515bbb52a66c51750846bbefe32a0",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E043",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0002_Д004_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf",
+      "copy": "sources/E043.pdf",
+      "text": "texts/E043.txt",
+      "sha256": "217ea631cc6a157aee2c51139f4ac930383b0cab236777d6390ac7c7aecebae7",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E044",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0002_Д005_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf",
+      "copy": "sources/E044.pdf",
+      "text": "texts/E044.txt",
+      "sha256": "39fc6ad7495af165633bdf67dd19cef8726d158d49abfa5ec1d967bf4a813b85",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 2
+    },
+    {
+      "id": "E045",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0003_2026-06-25_Ухвала про відкриття провадження у справі_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E045.html",
+      "text": "texts/E045.txt",
+      "sha256": "aeb7a8f29786407a7ac959ae23080ab9bcb56fdae8e434b87f8b258e54be5073",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E046",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0003_Д001_2026-06-25_Ухвала про відкриття провадження у справі_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E046.html",
+      "text": "texts/E046.txt",
+      "sha256": "449964ed3831fc6d46488b0c6999abfc9bf806d3cd0a7d0edd0b30ecefd4f93d",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E047",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0004_2026-06-30_Внесення дат слухання_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E047.html",
+      "text": "texts/E047.txt",
+      "sha256": "e58838a25e29c1c726a9a44344a94097c18682d9739acea155881c0dad019743",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E048",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0005_2026-06-30_Судова повістка про виклик в суд_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E048.html",
+      "text": "texts/E048.txt",
+      "sha256": "c019926e794e1334a21d240f0122484531bfa49d6c187d6dd603d5a8f2ee09fc",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E049",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0006_2026-06-30_Судова повістка про виклик в суд_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E049.html",
+      "text": "texts/E049.txt",
+      "sha256": "30d8d3eafb966c812865fbcd9773543a7dd411553c91d998506f228fbdde56f7",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E050",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0007_2026-06-30_Судова повістка про виклик в суд_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E050.html",
+      "text": "texts/E050.txt",
+      "sha256": "b81ed11b89e3efc33952ff5eeb72adc221efe442a44b58bcc9e06fc12d7ebc1b",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E051",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0008_2026-07-27_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E051.html",
+      "text": "texts/E051.txt",
+      "sha256": "a5bf703f5bd40a1b7e82fc68fe6add6b165c674be899f3976117ad23547889fd",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E052",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0009_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E052.html",
+      "text": "texts/E052.txt",
+      "sha256": "82fa4b36fdaf15025dc57e50edaa3ff1347ced15db7be0ba3db63bc62f14f3be",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E053",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0009_Д001_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf",
+      "copy": "sources/E053.pdf",
+      "text": "texts/E053.txt",
+      "sha256": "620cef1868e112ed5ed6aee93fb37eb33f5d8fd22ecc348040dc89a57fc6c9c4",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E054",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0010_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E054.html",
+      "text": "texts/E054.txt",
+      "sha256": "5964669e5e7cf35bf284d52cdc0e0aef6b46c2d9b19bf050a52ccddf44bd4485",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E055",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0010_Д001_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf",
+      "copy": "sources/E055.pdf",
+      "text": "texts/E055.txt",
+      "sha256": "e9613043c0df2092ad7e8091af4fdba43c27c35e72a0f107ef8b9d594e7fe07e",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 3
+    },
+    {
+      "id": "E056",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\0011_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html",
+      "copy": "sources/E056.html",
+      "text": "texts/E056.txt",
+      "sha256": "b504227389afb4efd131302bf7d8f97428462a7e619c12dfca4ae59432cde113",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E057",
+      "original_path": "копии ответов и разынх документов с сайта эелекторнный суд\\Ухвала ЦПК одноособово.html",
+      "copy": "sources/E057.html",
+      "text": "texts/E057.txt",
+      "sha256": "3c0eaf018eabb6ee78b744560a9dcc067bc66f9698092e3b84a63ec7dd5385e1",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E058",
+      "original_path": "отзыв и зая ва на видеоконфиренцию\\Відзив на позовну заяву (справа 127-20805-26).docx",
+      "copy": "sources/E058.docx",
+      "text": "texts/E058.txt",
+      "sha256": "3f3ad5c3cf7f50347400a43c8ce7809a07c5b419f2e82fe577c2f192737bc234",
+      "duplicate_of": null,
+      "kind": "Архив процессуального текста; статус подачи проверяется отдельно",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E059",
+      "original_path": "отзыв и зая ва на видеоконфиренцию\\Відзив — текст для вставки в кабінет.docx",
+      "copy": "sources/E059.docx",
+      "text": "texts/E059.txt",
+      "sha256": "f8b4fdde56a50eee24ce4805e5e6818cfaee0e1b395ca9899ac278920370e848",
+      "duplicate_of": null,
+      "kind": "Архив процессуального текста; статус подачи проверяется отдельно",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E060",
+      "original_path": "отзыв и зая ва на видеоконфиренцию\\Заява про відеоконференцію (справа 127-20805-26).docx",
+      "copy": "sources/E060.docx",
+      "text": "texts/E060.txt",
+      "sha256": "9ed04ef5040b608907dc055959b192abe7525a27f0e4f840ca55ac94e423a55b",
+      "duplicate_of": null,
+      "kind": "Архив процессуального текста; статус подачи проверяется отдельно",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E061",
+      "original_path": "повестка в суд\\dnzs_0232_90769419.html",
+      "copy": "sources/E046.html",
+      "text": "texts/E061.txt",
+      "sha256": "449964ed3831fc6d46488b0c6999abfc9bf806d3cd0a7d0edd0b30ecefd4f93d",
+      "duplicate_of": "E046",
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E062",
+      "original_path": "повестка в суд\\Внесення дат слухання.html",
+      "copy": "sources/E047.html",
+      "text": "texts/E062.txt",
+      "sha256": "e58838a25e29c1c726a9a44344a94097c18682d9739acea155881c0dad019743",
+      "duplicate_of": "E047",
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E063",
+      "original_path": "повестка в суд\\Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080 (1).pdf",
+      "copy": "sources/E063.pdf",
+      "text": "texts/E063.txt",
+      "sha256": "422adca5fa806cd47d67e3bd9cb86bee52ad4f1b667232068849a8bdd131d283",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E064",
+      "original_path": "повестка в суд\\Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080.pdf",
+      "copy": "sources/E064.pdf",
+      "text": "texts/E064.txt",
+      "sha256": "fe38b1c97921276c27522fa7425b5df9c845416ee1f42fb5da7cd20fe4123b88",
+      "duplicate_of": null,
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E065",
+      "original_path": "повестка в суд\\Судова повістка про виклик в суд.html",
+      "copy": "sources/E050.html",
+      "text": "texts/E065.txt",
+      "sha256": "b81ed11b89e3efc33952ff5eeb72adc221efe442a44b58bcc9e06fc12d7ebc1b",
+      "duplicate_of": "E050",
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E066",
+      "original_path": "повестка в суд\\Ухвала про відкриття провадження у справі.html",
+      "copy": "sources/E045.html",
+      "text": "texts/E066.txt",
+      "sha256": "aeb7a8f29786407a7ac959ae23080ab9bcb56fdae8e434b87f8b258e54be5073",
+      "duplicate_of": "E045",
+      "kind": "Сохранённая судебная копия или подтверждение",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E068",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Виписка з ЄДР на Кандауров Юрій Васильович.pdf",
+      "copy": "sources/E043.pdf",
+      "text": "texts/E068.txt",
+      "sha256": "217ea631cc6a157aee2c51139f4ac930383b0cab236777d6390ac7c7aecebae7",
+      "duplicate_of": "E043",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E069",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Виписка з ЄДР на Кандауров Юрій Васильович.pdf.p7s",
+      "copy": "sources/E069.p7s",
+      "text": null,
+      "sha256": "cb5a6e8be87485c7a434a4dc28c3ddc0ce0678b34dde290e8bba2e857d7e5c2f",
+      "duplicate_of": null,
+      "kind": "Публичный контейнер подписи; криптографически не проверен",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E070",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Довіреність на Омельченко Євген Володимирович.pdf",
+      "copy": "sources/E042.pdf",
+      "text": "texts/E070.txt",
+      "sha256": "b0d06c97e14acb5450ef01d88f9a0db5b55515bbb52a66c51750846bbefe32a0",
+      "duplicate_of": "E042",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 1
+    },
+    {
+      "id": "E071",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Довіреність на Омельченко Євген Володимирович.pdf.p7s",
+      "copy": "sources/E071.p7s",
+      "text": null,
+      "sha256": "b89d04bc1212824bc13659d7cf138df156113a522587313d4ccf0dd072be6c02",
+      "duplicate_of": null,
+      "kind": "Публичный контейнер подписи; криптографически не проверен",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E072",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Додатки до Позовна заява (Цивільне судочинство) Подольський Андрій Юрійович.pdf.p7s",
+      "copy": "sources/E072.p7s",
+      "text": null,
+      "sha256": "b5cc1eafb8745b3685c328b5f79ee73ed2086b0dec62d79465686be6ebf69433",
+      "duplicate_of": null,
+      "kind": "Публичный контейнер подписи; криптографически не проверен",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E073",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Позовна заява (Цивільне судочинство) Подольський Андрій Юрійович.pdf",
+      "copy": "sources/E016.pdf",
+      "text": "texts/E073.txt",
+      "sha256": "e9ec3bfce06420518cb0f654eefdf3b682fceeb7a9eadc1a950ac4ab86ff8fb7",
+      "duplicate_of": "E016",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 12
+    },
+    {
+      "id": "E074",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Позовна заява (Цивільне судочинство) Подольський Андрій Юрійович.pdf.p7s",
+      "copy": "sources/E074.p7s",
+      "text": null,
+      "sha256": "69160dd87f0197ad5ddfafffd082097c1032818ac08cbc4d14c4654195d20666",
+      "duplicate_of": null,
+      "kind": "Публичный контейнер подписи; криптографически не проверен",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E075",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Протокол перевірки КЕП заяви та додатків.pdf",
+      "copy": "sources/E044.pdf",
+      "text": "texts/E075.txt",
+      "sha256": "39fc6ad7495af165633bdf67dd19cef8726d158d49abfa5ec1d967bf4a813b85",
+      "duplicate_of": "E044",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": 2
+    },
+    {
+      "id": "E076",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Протокол перевірки КЕП заяви та додатків.pdf.p7s",
+      "copy": "sources/E076.p7s",
+      "text": null,
+      "sha256": "9ad15281cb06d37141963a96bd2b77b7199531b14db8d1a0f49e3695ea3c2390",
+      "duplicate_of": null,
+      "kind": "Публичный контейнер подписи; криптографически не проверен",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E077",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Реєстраційна картка вхідного документу  15.06.2026 58265 26-Вх.txt",
+      "copy": "sources/E077.txt",
+      "text": "texts/E077.txt",
+      "sha256": "45a88626a5be0d9a78416b39359782c1ab83c6acea54096eb9c811eda975ce0e",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E078",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Реєстраційна картка вхідного документу 27.07.2026.html",
+      "copy": "sources/E051.html",
+      "text": "texts/E078.txt",
+      "sha256": "a5bf703f5bd40a1b7e82fc68fe6add6b165c674be899f3976117ad23547889fd",
+      "duplicate_of": "E051",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E079",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Реєстраційна картка вхідного документу 27.07.2026.html.p7s",
+      "copy": "sources/E079.p7s",
+      "text": null,
+      "sha256": "46da68f2e4f8cc92f53a5022220a74b8b07a327f15ad8804bac4d15671b923ad",
+      "duplicate_of": null,
+      "kind": "Публичный контейнер подписи; криптографически не проверен",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E080",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Реєстраційна картка вхідного документу.html",
+      "copy": "sources/E039.html",
+      "text": "texts/E080.txt",
+      "sha256": "e7adce4bb5985925bdfdb9c7f234507b5c19a705f8fa0f85edb77722daa6951c",
+      "duplicate_of": "E039",
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E081",
+      "original_path": "Реєстраційна картка вхідного документу та додатки\\Реєстраційна картка вхідного документу.html.p7s",
+      "copy": "sources/E081.p7s",
+      "text": null,
+      "sha256": "6deef61a3067ec06f5839cb6b710970a7ea2b48c19f8a21e42560604ba108e59",
+      "duplicate_of": null,
+      "kind": "Публичный контейнер подписи; криптографически не проверен",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E082",
+      "original_path": "Стратегия дела — А-Банк (сценарии и финал).docx",
+      "copy": "sources/E082.docx",
+      "text": "texts/E082.txt",
+      "sha256": "63eb48bfae6335215ff8de200c1718ed6dd49268fef4565a4c488192506cd1b8",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E083",
+      "original_path": "Фіксація автоматизованого розподілу справ № бн від 15.06.2026\\Протокол автоматизованого розподілу судової справи між суддями.txt",
+      "copy": "sources/E083.txt",
+      "text": "texts/E083.txt",
+      "sha256": "edd75b908556f66c8c8b2e2d0d97187b8f957bee450b505a7a5a46a3eff60cfe",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E084",
+      "original_path": "Шпаргалка до засідання 29.07 — v2 (18.07).docx",
+      "copy": "sources/E084.docx",
+      "text": "texts/E084.txt",
+      "sha256": "86738787ffb6ba847b959d599fdc73a49fcac5f7c9fbf82071bc669802e49990",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E085",
+      "original_path": "Шпаргалка до засідання 29.07.docx",
+      "copy": "sources/E085.docx",
+      "text": "texts/E085.txt",
+      "sha256": "d75feacf08ad3a1ca9fa2df71eae4c041881f2d5f49da585bab22a6420d557a5",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "E086",
+      "original_path": "Як подати документи (Електронний кабінет).docx",
+      "copy": "sources/E086.docx",
+      "text": "texts/E086.txt",
+      "sha256": "e886376f9f81ac2542443a3d443c82f624b27bfe54754076edf84d331bfdd6a0",
+      "duplicate_of": null,
+      "kind": "Контекст или рабочий материал",
+      "pages_in_prior_inventory": null
+    },
+    {
+      "id": "U01",
+      "original_path": "Пояснення щодо звільнення від сплати судового збору за зустрічною позовною заявою.pdf",
+      "copy": "sources/U01.pdf",
+      "text": "texts/U01.txt",
+      "sha256": "05200a31f0bb7405fcebbe54e372db8712b82b082adbb92b8105be35581778cb",
+      "duplicate_of": null,
+      "kind": "Передан клиентом 01.10; пояснения ЕСІТС о сборе от 29.07",
+      "pages_in_prior_inventory": 2
+    }
+  ],
+  "drafts": [
+    {
+      "id": "P01",
+      "role": "court",
+      "pages": 2,
+      "files": {
+        "txt": {
+          "path": "drafts/ДО_СУДУ/01_Ознайомлення_з_відповіддю_банку.txt",
+          "sha256": "b12fe487376935df2ff5e5eaf82e157a5964973ca1dcb1a5d028a74fd3cab3bf"
+        },
+        "docx": {
+          "path": "drafts/ДО_СУДУ/01_Ознайомлення_з_відповіддю_банку.docx",
+          "sha256": "6b0a1b2118afe11698ff527c86df7612fc02f67ca6314eb0d68450590032fe97"
+        },
+        "pdf": {
+          "path": "drafts/ДО_СУДУ/01_Ознайомлення_з_відповіддю_банку.pdf",
+          "sha256": "be6a329b19a7fe13b7d33e49e4049ce0fae9db6a5872a0164eb855b933c849c3"
+        }
+      }
+    },
+    {
+      "id": "P02",
+      "role": "court",
+      "pages": 3,
+      "files": {
+        "txt": {
+          "path": "drafts/ДО_СУДУ/02_Уточнені_письмові_пояснення.txt",
+          "sha256": "23e5327a4c8f5d6e5d4d6676301d127f0857cf4d387a128e8894d1ae68b4cf30"
+        },
+        "docx": {
+          "path": "drafts/ДО_СУДУ/02_Уточнені_письмові_пояснення.docx",
+          "sha256": "48d6f94e8d9b9c1b5aa09260be8410a1647209a509da54126b673bb5cce33b54"
+        },
+        "pdf": {
+          "path": "drafts/ДО_СУДУ/02_Уточнені_письмові_пояснення.pdf",
+          "sha256": "9636f79336f34e37b638cce0aa36ffb08ca08fa84c4f0a4fd0c4559114f29716"
+        }
+      }
+    },
+    {
+      "id": "P03",
+      "role": "court",
+      "pages": 2,
+      "files": {
+        "txt": {
+          "path": "drafts/ДО_СУДУ/03_Розгляд_раніше_заявлених_клопотань.txt",
+          "sha256": "f4eaec2c3937290db404018e354298fc2818b246f6cc056d29ff29c37cb0243b"
+        },
+        "docx": {
+          "path": "drafts/ДО_СУДУ/03_Розгляд_раніше_заявлених_клопотань.docx",
+          "sha256": "d4be3f1f3bb8ff377d812abf9c34674fb652bc868140a2a74aad416bb1a84f36"
+        },
+        "pdf": {
+          "path": "drafts/ДО_СУДУ/03_Розгляд_раніше_заявлених_клопотань.pdf",
+          "sha256": "c847ce89f1665887ba223ab9e719a7dee3ae7423608c518be2f9b83075e7adb7"
+        }
+      }
+    },
+    {
+      "id": "P04",
+      "role": "court",
+      "pages": 2,
+      "files": {
+        "txt": {
+          "path": "drafts/ДО_СУДУ/04_Пояснення_щодо_зустрічного_позову.txt",
+          "sha256": "d070af5fe7f873793e589ae8b0a1c9f436ac732dac732a6c92eead628444edf2"
+        },
+        "docx": {
+          "path": "drafts/ДО_СУДУ/04_Пояснення_щодо_зустрічного_позову.docx",
+          "sha256": "a463be41ad9e809cc888809113bec113588dafed46d8a7e7df0f1fa638f523ab"
+        },
+        "pdf": {
+          "path": "drafts/ДО_СУДУ/04_Пояснення_щодо_зустрічного_позову.pdf",
+          "sha256": "e5cd127f294e7cccd6d95b364ada62dc0027ae89cdfda2f620ade98ecc708d83"
+        }
+      }
+    },
+    {
+      "id": "P05",
+      "role": "attachment",
+      "pages": 1,
+      "files": {
+        "txt": {
+          "path": "drafts/ДОДАТКИ/05_Контрольні_зіставлення.txt",
+          "sha256": "016ca3c450560eedf8d0df7a857636aef3a21fea79ad4e55ba728e3ff2b67c12"
+        },
+        "docx": {
+          "path": "drafts/ДОДАТКИ/05_Контрольні_зіставлення.docx",
+          "sha256": "a05bb45d5e0dccb083b716931e3eeaf9ccdf343241732bdfee34ae0f4469ec19"
+        },
+        "pdf": {
+          "path": "drafts/ДОДАТКИ/05_Контрольні_зіставлення.pdf",
+          "sha256": "87edd4c405d3afb617c54564e3c2d937c4af80f4f388cc903d1189b25a15a6aa"
+        }
+      }
+    },
+    {
+      "id": "P06",
+      "role": "attachment",
+      "pages": 5,
+      "files": {
+        "txt": {
+          "path": "drafts/ДОДАТКИ/06_Деталізація_комісій.txt",
+          "sha256": "dfe30e3261e56aaacb678b14e16e2670c9ea1d34590fc18f8f606a1de64c77d1"
+        },
+        "docx": {
+          "path": "drafts/ДОДАТКИ/06_Деталізація_комісій.docx",
+          "sha256": "a4c02965932bdea66695777fdc04f317183c26fc533e48cd4cd572fc15b5ef77"
+        },
+        "pdf": {
+          "path": "drafts/ДОДАТКИ/06_Деталізація_комісій.pdf",
+          "sha256": "3bfcc98ea033661b64e68bbdd468f72b9dc15abb689f419bace2f15d894d1c33"
+        }
+      }
+    },
+    {
+      "id": "P07",
+      "role": "private",
+      "pages": 4,
+      "files": {
+        "txt": {
+          "path": "drafts/ДЛЯ_СЕБЕ/07_Сценарій_репетиції_засідання.txt",
+          "sha256": "7c777c27e00d5cbc918ca98dd792e7c45b66027a9536d75d060c3a8995ce400a"
+        },
+        "docx": {
+          "path": "drafts/ДЛЯ_СЕБЕ/07_Сценарій_репетиції_засідання.docx",
+          "sha256": "cdccb0f8dcd2b07dc25c661900c425fa038e35601a0d2f7031a346199e3ebe04"
+        },
+        "pdf": {
+          "path": "drafts/ДЛЯ_СЕБЕ/07_Сценарій_репетиції_засідання.pdf",
+          "sha256": "3b26fedb21b58eb3d3633df0c2e8587a49f9a6ce739cdc401acfbebea6e53f01"
+        }
+      }
+    }
+  ],
+  "excluded_original_ids": [
+    "001",
+    "002",
+    "004",
+    "067"
+  ],
+  "private_key_read": false,
+  "pdfs_reparsed_this_phase": false,
+  "signature_verification_performed": false,
+  "independent_lawyer_review_completed": false,
+  "external_submission_performed": false,
+  "client_goal_provenance": "Direct user message in this conversation on 2026-10-02: maximize lawful time before judgment, ideally about a year, with almost no money; no authority to fabricate grounds, file or sign on behalf of user."
+}

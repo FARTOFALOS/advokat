@@ -1,0 +1,26 @@
+const {chromium}=require('playwright'),fs=require('fs'),path=require('path');
+const {pathToFileURL}=require('url');
+(async()=>{
+ const browser=await chromium.launch({headless:true,channel:'msedge'});
+ const page=await browser.newPage({viewport:{width:1360,height:980},deviceScaleFactor:1});
+ const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+ const qa=path.join(__dirname,'qa');fs.mkdirSync(qa,{recursive:true});
+ await page.goto(pathToFileURL(path.join(__dirname,'ДОСЬЕ.html')).href,{waitUntil:'load'});
+ const headings=await page.locator('article h2').count();const branches=await page.locator('article h3[id^="b"]').count();
+ await page.screenshot({path:path.join(qa,'dossier-top.png')});
+ await page.selectOption('#branch','b18');
+ await page.locator('#b18').scrollIntoViewIfNeeded();
+ await page.screenshot({path:path.join(qa,'dossier-branch.png')});
+ const desktop=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
+ await page.setViewportSize({width:390,height:900});await page.evaluate(()=>window.scrollTo(0,0));
+ const mobile=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
+ await page.screenshot({path:path.join(qa,'dossier-mobile.png')});
+ await page.setViewportSize({width:1360,height:980});
+ await page.goto(pathToFileURL(path.join(__dirname,'КАТАЛОГ_ИСТОЧНИКОВ.html')).href,{waitUntil:'load'});
+ const rows=await page.locator('article table').first().locator('tbody tr').count();
+ await page.screenshot({path:path.join(qa,'catalog.png')});
+ const result={headings,branches,catalog_rows:rows,desktop,mobile,errors,pdfs_opened:false};
+ fs.writeFileSync(path.join(qa,'html_checks.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+ await browser.close();
+ if(headings!==20||branches!==35||rows!==83||desktop.scroll>desktop.viewport||mobile.scroll>mobile.viewport||errors.length)process.exitCode=1;
+})().catch(e=>{console.error(String(e));process.exitCode=1});

@@ -1,0 +1,23 @@
+const {chromium}=require('playwright');
+const {pathToFileURL}=require('url');
+const path=require('path');
+const fs=require('fs');
+(async()=>{
+ const browser=await chromium.launch({headless:true,channel:'msedge'});
+ const page=await browser.newPage({viewport:{width:1280,height:1000},deviceScaleFactor:1});
+ const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+ const source=path.resolve(__dirname,'../../Дорожня карта 2.0 — дерево сценаріїв (А-Банк).html');
+ await page.goto(pathToFileURL(source).href,{waitUntil:'load'});
+ await page.screenshot({path:path.join(__dirname,'images','roadmap-desktop.png')});
+ const desktop=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,title:document.title}));
+ await page.getByRole('button',{name:'Раскрыть сценарии'}).click();
+ const openScenarios=await page.locator('#branches ~ details[open]').count();
+ await page.setViewportSize({width:390,height:900});
+ await page.screenshot({path:path.join(__dirname,'images','roadmap-mobile.png')});
+ const mobile=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));
+ const result={desktop,mobile,openScenarios,errors};
+ fs.writeFileSync(path.join(__dirname,'roadmap-visual-check.json'),JSON.stringify(result,null,2));
+ console.log(JSON.stringify(result));
+ await browser.close();
+ if(errors.length||desktop.scroll>desktop.width||mobile.scroll>mobile.width||openScenarios!==5)process.exitCode=1;
+})().catch(e=>{console.error(String(e));process.exitCode=1});

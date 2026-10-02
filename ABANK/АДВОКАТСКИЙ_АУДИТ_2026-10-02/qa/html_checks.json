@@ -1,0 +1,15 @@
+{
+  "headings": 20,
+  "branches": 35,
+  "catalog_rows": 83,
+  "desktop": {
+    "viewport": 1360,
+    "scroll": 1360
+  },
+  "mobile": {
+    "viewport": 390,
+    "scroll": 390
+  },
+  "errors": [],
+  "pdfs_opened": false
+}
