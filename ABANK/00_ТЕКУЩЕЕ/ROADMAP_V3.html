@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roadmap V3 — А-Банк</title>
+<style>
+:root{--bg:#f4f6f8;--card:#ffffff;--ink:#1f2d3a;--muted:#5a6b7a;--line:#d7e0e7;--accent:#1d5b85;--ok:#2f7a4b;--warn:#a5651a;--bad:#a33a3a;--chip:#eaf1f6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11171c;--card:#19222a;--ink:#e3e9ee;--muted:#9fb0bd;--line:#2c3a45;--accent:#7cb8e0;--ok:#6cc08c;--warn:#e0a35a;--bad:#e07a7a;--chip:#22303b}}
+:root[data-theme="dark"]{--bg:#11171c;--card:#19222a;--ink:#e3e9ee;--muted:#9fb0bd;--line:#2c3a45;--accent:#7cb8e0;--ok:#6cc08c;--warn:#e0a35a;--bad:#e07a7a;--chip:#22303b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:26px;line-height:1.25;margin:6px 0 4px}
+h2{font-size:20px;margin:28px 0 10px}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:6px 0}
+a{color:var(--accent)}
+.muted{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0}
+.here{border-left:5px solid var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.step{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}
+.step:first-child{border-top:0}
+.num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--accent);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:700}
+.ua{font-style:italic}
+.chip{display:inline-block;background:var(--chip);border-radius:999px;padding:1px 10px;font-size:13px;margin:2px 4px 2px 0}
+.ok{border-left:5px solid var(--ok)}
+.warn{border-left:5px solid var(--warn)}
+.bad{border-left:5px solid var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{border-top:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.scroll{overflow-x:auto}
+ul{margin:6px 0 6px 18px;padding:0}
+li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow .box{background:var(--chip);border-radius:8px;padding:8px 10px;font-size:14px}
+.flow .arrow{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<p class="muted">Справа № 127/20805/26 · Вінницький міський суд · суддя Бессараб Н. М. · иск 184 532,63 грн + сбор 2 662,40 · обновлено 03.10.2026</p>
+<h1>Roadmap V3 — дело А-Банка</h1>
+<p class="muted">Полная версия: <a href="01_ГДЕ_МЫ_СЕЙЧАС.md">01_ГДЕ_МЫ_СЕЙЧАС.md</a> · стратегия: <a href="02_СТРАТЕГИЯ.md">02_СТРАТЕГИЯ.md</a> · сценарий: <a href="07_ЗАСЕДАНИЕ_05-10.md">07_ЗАСЕДАНИЕ_05-10.md</a></p>
+
+<div class="card here">
+<h3>▶ Вы здесь — суббота, 03.10.2026</h3>
+<p>V3 готова. До заседания осталось одно действие: <strong>подать Д1 и Д2</strong> в «Електронний суд», каждый в два шага: «надіслати сторонам» → «відправити до суду». Затем <strong>05.10, 10:00, ВКЗ, зал 38</strong>; подключиться в 09:40.</p>
+<p><span class="chip"><a href="V3_ПАКЕТ/1_ДО_05-10_подать/Д1_Додаткові_пояснення_до_заяви_02-10.txt">Д1 — продление по инициативе суда</a></span><span class="chip"><a href="V3_ПАКЕТ/1_ДО_05-10_подать/Д2_Клопотання_74171_ч4_ст279.txt">Д2 — 74171, ч. 4 ст. 279</a></span><span class="chip"><a href="V3_ПАКЕТ/3_ШПАРГАЛКИ/Ш3_Електронний_суд_подача.md">как подать</a></span><span class="chip"><a href="V3_ПАКЕТ/3_ШПАРГАЛКИ/Ш1_05-10_одна_страница.md">шпаргалка Ш1</a></span></p>
+</div>
+
+<div class="card">
+<h3>Цель и показатель успеха</h3>
+<p>Отодвинуть момент, когда банк сможет <strong>принудительно</strong> взыскивать, примерно к осени 2027 года, когда ожидаются деньги. Сумма не должна вырасти, а исполнительного сбора 10 % нужно избежать. Число перенесённых заседаний само по себе ничего не значит.</p>
+</div>
+
+<h2>05.10 — порядок действий</h2>
+<div class="card">
+<div class="step"><div class="num">1</div><div><strong>Отзыв.</strong> Срок пропущен, это признаём. Просим продлить его <em>по инициативе суда</em> (ч. 2 ст. 127; ВП ВС № 914/2848/22). Банк получил всё вовремя и 27.07 ответил; сам банк ответил через 25 дней вместо трёх, поэтому просим одинакового подхода. Отзыв принять независимо от встречного иска.</div></div>
+<div class="step"><div class="num">2</div><div><strong>Встречный иск.</strong> Просим решить. Если вернут — не спорим. Если отзыв принят: «прошу вирішити п. 7 відзиву — загальне провадження».</div></div>
+<div class="step"><div class="num">3</div><div><strong>Ответ банка 74171.</strong> Текста не получали; 3 дня на возражения ещё не начались. Просим копию и отложение по <strong>ч. 4 ст. 279</strong>. Если отзыв не принят: тогда 74171 не учитывается, или нам дают копию и время (ч. 9 ст. 83).</div></div>
+<div class="step"><div class="num">4</div><div><strong>Истребование</strong> — только если отзыв принят: ходатайство № 75452, при необходимости точечно.</div></div>
+<div class="step"><div class="num">5</div><div><strong>По существу</strong> (2 мин): пользование картой не отрицаем. (1) Продукт и ставка не доказаны: паспорт с тремя ставками, № 393/126/20, ставка изменена без документа, ч. 1 ст. 13 Закона. (2) В теле 113 161,42 списаний по «Розстрочкам» без договоров. Уточнение: 46 927,25 — не двойная ставка.</div></div>
+<div class="step"><div class="num">6</div><div><strong>Банка нет, а суд готов решать:</strong> один раз просим личные пояснения представителя (п. 5 ч. 2 ст. 223).</div></div>
+<div class="step"><div class="num">7</div><div><strong>Решение:</strong> спросить дату полного текста. Апелляция — 30 дней.</div></div>
+<p class="muted">Правило остановки: дали копию, срок или новую дату — больше ничего не заявлять.</p>
+</div>
+
+<h2>Ветки после 05.10</h2>
+<div class="grid">
+<div class="card ok"><h3>A · Отзыв и встречный иск приняты</h3><p>Общее производство (ч. 4 ст. 193): рассмотрение с начала, подготовка 60+30 дней и дольше. Самая длинная ветка: решение ≈ лето–осень 2027.</p></div>
+<div class="card ok"><h3>B · Отзыв принят, встречный возвращён</h3><p>Копия 74171 → отложение по ч. 4 ст. 279 → возражения <a href="V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д3_Заперечення_ЗАГОТОВКА.txt">Д3</a> за 3 дня → истребование. Решение ≈ декабрь 2026 – март 2027.</p></div>
+<div class="card warn"><h3>C · Отзыв не принят</h3><p>Развилка по 74171 → устные пояснения → решение, возможно 05.10. Дальше апелляция (≈ до весны–лета 2027) и отсрочка по ст. 435 до года со дня решения.</p></div>
+<div class="card"><h3>D · Мировое</h3><p>Письменные условия; медиация до 90 дней — только вместе с банком. Цифры называет клиент: <a href="V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д7_Пропозиція_врегулювання_ЗАГОТОВКА.txt">Д7</a>.</p></div>
+<div class="card bad"><h3>E · Суд сам отказал в 116 019,82</h3><p>Решение сейчас меньше (≈ 68,5 тыс.), но проценты продолжают начисляться, и банк начнёт новый круг. Сразу переговоры.</p></div>
+</div>
+
+<h2>После решения — путь к деньгам</h2>
+<div class="card">
+<div class="flow"><span class="box">Решение</span><span class="arrow">→</span><span class="box">Апелляция ≤ 30 дней с полного текста; решение не вступает в силу (<a href="V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д4_Апеляційна_скарга_КАРКАС.txt">Д4</a>)</span><span class="arrow">→</span><span class="box">Постановление апелляционного суда</span><span class="arrow">→</span><span class="box">Отсрочка по ст. 435, до года со дня решения (<a href="V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д5_Заява_ст435_відстрочка_ЗАГОТОВКА.txt">Д5</a>)</span><span class="arrow">→</span><span class="box"><strong>Оплата или мировое ДО исполнительного производства</strong> (иначе +10 %)</span></div>
+<p class="muted">Апелляционный сбор ≈ 3 993,60 грн. Если доход за 2025 год меньше 79 872 грн, можно просить отсрочку уплаты до постановления (ст. 8 Закона «Про судовий збір»).</p>
+</div>
+
+<h2>Ориентир по времени (не прогноз)</h2>
+<div class="card scroll">
+<table>
+<tr><th>Ветка</th><th>Решение 1-й инстанции</th><th>Вступление в силу с апелляцией</th><th>Принудительное взыскание не раньше</th></tr>
+<tr><td>C</td><td>05.10.2026 или следующее заседание</td><td>≈ весна–лето 2027</td><td>≈ весна–лето 2027; с отсрочкой — до ≈ 05.10.2027</td></tr>
+<tr><td>B</td><td>≈ дек. 2026 – март 2027</td><td>≈ лето 2027 – начало 2028</td><td>≈ конец 2027 – 2028</td></tr>
+<tr><td>A</td><td>≈ лето–осень 2027</td><td>≈ 2028</td><td>2028 и позже</td></tr>
+</table>
+<p class="muted">Единственное наблюдение по этому суду — 68 дней между заседаниями (29.07 → 05.10).</p>
+</div>
+
+<h2>Почему долг не растёт — и когда это перестаёт работать</h2>
+<div class="card">
+<ul>
+<li>После требования о досрочном возврате договорные проценты не начисляются (ВП ВС № 444/9519/12).</li>
+<li>3 % годовых, инфляционные и пеня: п. 18 переходных положений ЦК (военное положение, сейчас до 31.10.2026) <strong>и</strong> п. 6 разд. IV Закона о потребкредитовании — для старых договоров, до прекращения обязательств.</li>
+<li><strong>Предел:</strong> если досрочное взыскание признают недействительным, проценты 40,8 % пойдут дальше (≈ 4 469 грн в месяц). Поэтому довод по ч. 4 ст. 16 в суде <strong>не заявляем</strong>.</li>
+</ul>
+</div>
+
+<h2>Не говорить и не делать</h2>
+<div class="card bad">
+<ul>
+<li>«Двойные проценты» · «внёс 285 тыс.» · «подпись поддельная» · «сбой ЕСИТС» о собственной ошибке · суммы и даты оплаты · 711,77 / 41,12 / 805.</li>
+<li>Неявки, больничные и сбои «для переноса», отводы, повторные ходатайства, придержанные документы, экспертиза (от 11 400 до 44 000+ грн, решение клиента 03.10).</li>
+</ul>
+</div>
+
+<p class="muted">Подготовлено ИИ-ассистентом (V3); практикующий адвокат не проверял. Нормы сверены с официальными текстами 03.10.2026 — <a href="09_ПРАВОВАЯ_БАЗА_V3.md">09_ПРАВОВАЯ_БАЗА_V3.md</a>. Сравнение версий — <a href="10_ВЕРДИКТ_ПО_ВЕРСИЯМ.md">10_ВЕРДИКТ_ПО_ВЕРСИЯМ.md</a>. Не направлять в суд и банку.</p>
+</main>
+</body>
+</html>
