@@ -1,0 +1,961 @@
+<meta charset="utf-8">
+<title>Древо дела А-Банка</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Интерактивная 3D-карта дела № 127/20805/26: где мы сейчас, возможные ветки, сроки, стратегия и документы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Unbounded:wght@500;700&display=swap">
+<style>
+/* Layout: досье справы — шапка с номером дела, 3D-древо как центр, ниже разделы-реестры на тонких линейках */
+:root{
+  --paper:#EDF0F5; --sheet:#FFFFFF; --ink:#141D33; --ink-2:#46526D; --ink-3:#5E6985;
+  --rule:#CDD4E0; --rule-2:#E3E8F0; --stamp:#4436C9; --stamp-soft:#E7E4FB;
+  --fact:#0B7F62; --issue:#B06A08; --issue-ink:#8F5404; --unknown:#6E7A93; --client:#A23B8C;
+  --future:#2F6FB3; --goal:#B98A0A; --risk:#C0392B;
+  --c1:#2F6FB3; --c2:#B8740A; --c3:#8E44AD;
+  --scene:#E9EDF4; --scene-2:#DCE2EC;
+  --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Roboto,system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1120; --sheet:#141B2D; --ink:#E6EBF4; --ink-2:#A9B3CA; --ink-3:#8590AA;
+    --rule:#2A3550; --rule-2:#1E2740; --stamp:#A097FF; --stamp-soft:#272352;
+    --fact:#3BC79E; --issue:#EFA53D; --issue-ink:#EFA53D; --unknown:#8D99B2; --client:#E27FCB;
+    --future:#6FA8F0; --goal:#F2C94C; --risk:#F2735F;
+    --c1:#5C95DE; --c2:#C98019; --c3:#AE74D6;
+    --scene:#0A0F1C; --scene-2:#111A2E;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1120; --sheet:#141B2D; --ink:#E6EBF4; --ink-2:#A9B3CA; --ink-3:#8590AA;
+  --rule:#2A3550; --rule-2:#1E2740; --stamp:#A097FF; --stamp-soft:#272352;
+  --fact:#3BC79E; --issue:#EFA53D; --issue-ink:#EFA53D; --unknown:#8D99B2; --client:#E27FCB;
+  --future:#6FA8F0; --goal:#F2C94C; --risk:#F2735F;
+  --c1:#5C95DE; --c2:#C98019; --c3:#AE74D6;
+  --scene:#0A0F1C; --scene-2:#111A2E;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+a{color:var(--stamp);text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+h1,h2,h3{text-wrap:balance}
+.mono{font-family:var(--f-mono)}
+.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin-inline:auto;position:relative;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.kicker{font:500 11.5px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+
+/* шапка */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--rule)}
+.bar-in{display:flex;align-items:center;gap:14px;padding-block:9px}
+.bar-case{font:500 13px/1 var(--f-display);color:var(--ink);text-decoration:none;white-space:nowrap}
+.bar-case span{font:400 10.5px/1 var(--f-mono);color:var(--ink-3);margin-right:6px;text-transform:uppercase;letter-spacing:.1em}
+.bar-nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;margin-left:auto}
+.bar-nav::-webkit-scrollbar{display:none}
+.bar-nav a{padding:6px 10px;border-radius:999px;color:var(--ink-2);text-decoration:none;font-size:13.5px;white-space:nowrap}
+.bar-nav a:hover{background:var(--stamp-soft);color:var(--ink)}
+
+/* герой */
+.hero{padding-block:34px 0}
+.eyebrow{margin:0 0 10px}
+.case-no{font:700 clamp(42px,9.5vw,92px)/.95 var(--f-display);letter-spacing:-.025em;margin:0}
+.case-sub{margin:12px 0 0;color:var(--ink-2);font:400 13px/1.5 var(--f-mono)}
+.lede{font-size:18px;line-height:1.5;max-width:56ch;margin:18px 0 0}
+.status{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:26px;border-block:1px solid var(--rule)}
+.st{padding:14px 16px 14px 0;display:grid;gap:3px;min-width:0}
+.st+.st{padding-left:16px;border-left:1px solid var(--rule)}
+.st-v{font:500 22px/1.15 var(--f-display)}
+.st-n{color:var(--ink-2);font-size:13.5px;line-height:1.45}
+.stamp{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:6px;transform:rotate(-7deg);border:2px solid var(--issue-ink);color:var(--issue-ink);font:700 12px/1.25 var(--f-display);letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;border-radius:6px;text-align:center;opacity:.9}
+@media (max-width:760px){
+  .status{grid-template-columns:1fr}
+  .st+.st{border-left:0;border-top:1px solid var(--rule);padding-left:0}
+  .stamp{position:static;display:inline-block;margin-top:16px;transform:rotate(-3deg)}
+}
+
+/* секции */
+.sec{padding-block:60px 0}
+.sec-head{display:grid;gap:6px;margin-bottom:20px;max-width:72ch}
+.sec-head h2{font:500 clamp(22px,3.2vw,30px)/1.15 var(--f-display);margin:0;letter-spacing:-.01em}
+.sec-head p{margin:0;color:var(--ink-2)}
+.sub{font:600 15px/1.3 var(--f-body);margin:28px 0 10px}
+
+/* древо */
+.tree-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--sheet)}
+.stage{position:relative;height:660px;min-width:0;background:var(--scene);overflow:hidden}
+#scene{display:block;width:100%;height:100%;cursor:grab;touch-action:pan-y;outline:none}
+#scene:focus-visible{box-shadow:inset 0 0 0 2px var(--stamp)}
+#scene.drag{cursor:grabbing}
+#scene.hot{cursor:pointer}
+.labels{position:absolute;inset:0;pointer-events:none}
+.nl{position:absolute;left:0;top:0;pointer-events:auto;display:flex;flex-direction:column;align-items:flex-start;padding:3px 7px;margin:0;border:1px solid transparent;border-radius:6px;background:var(--sheet);background:color-mix(in srgb,var(--sheet) 84%,transparent);color:var(--ink);font:500 12px/1.25 var(--f-body);text-align:left;cursor:pointer;white-space:nowrap;visibility:hidden;will-change:transform}
+.nl .d{font:400 10.5px/1.25 var(--f-mono);color:var(--ink-3)}
+.nl:hover,.nl.hov{border-color:var(--rule)}
+.nl.sel{border-color:var(--stamp);box-shadow:0 0 0 1px var(--stamp)}
+.nl[data-s="now"] .t{font-weight:600}
+.stage-ui{position:absolute;left:12px;top:12px;right:12px;display:flex;flex-wrap:wrap;gap:8px;pointer-events:none}
+.seg{display:inline-flex;pointer-events:auto;background:var(--sheet);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.seg button{appearance:none;border:0;margin:0;background:transparent;cursor:pointer;padding:7px 11px;font:500 12.5px/1.2 var(--f-body);color:var(--ink-2)}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button.on,.seg button[aria-pressed="true"]{background:var(--stamp-soft);color:var(--ink)}
+.seg button:focus-visible{outline:2px solid var(--stamp);outline-offset:-2px}
+.hint{position:absolute;left:12px;bottom:10px;margin:0;font:400 11.5px/1.3 var(--f-mono);color:var(--ink-3);pointer-events:none}
+.nogl{position:absolute;inset:auto 12px 40px 12px;margin:0;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--sheet);font-size:14px}
+.panel{border-left:1px solid var(--rule);padding:20px 20px 18px;max-height:660px;overflow:auto;min-width:0;background:var(--sheet)}
+.p-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.p-date{font:500 12.5px/1 var(--f-mono);color:var(--ink-2)}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:3px 9px 3px 7px;border:1px solid var(--rule);border-radius:999px;font:500 11.5px/1.3 var(--f-body);color:var(--ink)}
+.p-title{font:500 20px/1.2 var(--f-display);margin:12px 0 10px}
+.panel p{margin:0 0 10px;font-size:14.5px;line-height:1.55}
+.panel h4{margin:16px 0 7px}
+.p-list{margin:0;padding-left:18px;display:grid;gap:5px;font-size:14px}
+.p-nav{display:flex;justify-content:space-between;gap:8px;margin-top:18px;padding-top:12px;border-top:1px solid var(--rule)}
+.btn{appearance:none;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);font:500 13px/1 var(--f-body);padding:9px 12px;border-radius:8px;cursor:pointer}
+.btn:hover{border-color:var(--ink-3)}
+@media (max-width:900px){
+  .tree-grid{grid-template-columns:1fr}
+  .stage{height:min(540px,74vh)}
+  .panel{border-left:0;border-top:1px solid var(--rule);max-height:none}
+}
+.g{--gc:var(--ink-3);width:11px;height:11px;border-radius:50%;display:inline-block;flex:none;background:var(--gc);border:2px solid var(--gc)}
+.g[data-s="fact"]{--gc:var(--fact)}
+.g[data-s="issue"]{--gc:var(--issue);box-shadow:0 0 0 2px var(--sheet),0 0 0 3px var(--issue)}
+.g[data-s="unknown"]{--gc:var(--unknown);background:transparent}
+.g[data-s="client"]{--gc:var(--client);background:transparent;border-style:dashed}
+.g[data-s="possible"]{--gc:var(--unknown);background:transparent;border-style:dotted}
+.g[data-s="now"]{--gc:var(--stamp);box-shadow:0 0 0 3px var(--stamp-soft)}
+.g[data-s="future"]{--gc:var(--future);background:transparent}
+.g[data-s="goal"]{--gc:var(--goal)}
+.g[data-s="risk"]{--gc:var(--risk);border-radius:2px;transform:rotate(45deg) scale(.82)}
+.legend{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink-2)}
+.legend li{display:inline-flex;align-items:center;gap:7px}
+.tlist{margin-top:16px;border-top:1px solid var(--rule);padding-top:12px}
+.tlist summary{cursor:pointer;font-weight:500;color:var(--ink-2)}
+.tl-group{margin-top:16px}
+.tl-group h3{margin:0 0 4px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;padding:10px 0;border-top:1px solid var(--rule-2)}
+.tl .tl-d{font:500 12.5px/1.5 var(--f-mono);color:var(--ink-2)}
+.tl button{appearance:none;border:0;background:none;padding:0;cursor:pointer;font:600 15px/1.35 var(--f-body);color:var(--ink);text-align:left;display:inline-flex;align-items:center;gap:8px}
+.tl button:hover{color:var(--stamp)}
+.tl p{margin:3px 0 0;color:var(--ink-2);font-size:14px}
+@media (max-width:560px){.tl li{grid-template-columns:1fr;gap:2px}}
+
+/* чек-лист */
+.todo{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.todo li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--rule)}
+.todo input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--stamp)}
+.todo label{font-weight:600;cursor:pointer}
+.todo .no{font:500 12px/1 var(--f-mono);color:var(--ink-3);margin-right:8px}
+.todo .td{color:var(--ink-2);font-size:14px;margin-top:3px}
+.tag{font:500 10.5px/1 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--rule);padding:6px 8px;border-radius:4px;white-space:nowrap}
+.tag[data-k="you"]{border-color:var(--stamp);color:var(--ink)}
+.todo li.done label{text-decoration:line-through;color:var(--ink-3)}
+@media (max-width:560px){.todo li{grid-template-columns:auto minmax(0,1fr)}.todo .tag{grid-column:2;justify-self:start}}
+
+/* сроки */
+.dl{list-style:none;margin:0;padding:0;position:relative}
+.dl::before{content:"";position:absolute;left:186px;top:14px;bottom:14px;width:2px;background:var(--rule)}
+.dl li{display:grid;grid-template-columns:160px 20px minmax(0,1fr);gap:16px;padding:12px 0;position:relative}
+.dl .when{font:500 13px/1.45 var(--f-mono);text-align:right;color:var(--ink)}
+.dl .dot{--gc:var(--ink-3);width:14px;height:14px;border-radius:50%;margin-top:3px;justify-self:center;background:var(--gc);box-shadow:0 0 0 4px var(--paper);position:relative;z-index:1}
+.dl li[data-s="issue"] .dot{--gc:var(--issue)}
+.dl li[data-s="unknown"] .dot{--gc:var(--unknown)}
+.dl li[data-s="client"] .dot{--gc:var(--client)}
+.dl li[data-s="future"] .dot{--gc:var(--future)}
+.dl li[data-s="goal"] .dot{--gc:var(--goal)}
+.dl .dt{font-weight:600}
+.dl .dd{color:var(--ink-2);font-size:14px;margin-top:2px;max-width:64ch}
+@media (max-width:640px){
+  .dl::before{left:9px}
+  .dl li{grid-template-columns:20px minmax(0,1fr);gap:12px}
+  .dl .when{grid-column:2;grid-row:1;text-align:left}
+  .dl .dot{grid-column:1;grid-row:1/span 2}
+  .dl li>div:last-child{grid-column:2}
+}
+
+/* стратегия */
+.mq{font-size:clamp(18px,2.2vw,21px);line-height:1.5;max-width:62ch;margin:8px 0 0}
+.order{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-block:1px solid var(--rule)}
+.order li{padding:14px 14px 16px 0;min-width:0}
+.order li+li{padding-left:14px;border-left:1px solid var(--rule)}
+.order .on{font:700 24px/1 var(--f-display);color:var(--stamp)}
+.order b{display:block;margin:10px 0 4px;font-size:14.5px}
+.order span{color:var(--ink-2);font-size:13.5px;line-height:1.45;display:block}
+@media (max-width:900px){.order{grid-template-columns:1fr 1fr}.order li+li{border-left:0;padding-left:0}.order li{border-bottom:1px solid var(--rule-2)}}
+@media (max-width:520px){.order{grid-template-columns:1fr}}
+.formula{margin-top:28px;padding:18px 20px;border:1px dashed var(--stamp);border-radius:10px;background:var(--sheet)}
+.formula p{margin:8px 0 0;font-size:16px;line-height:1.5}
+.axes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.axis{border:1px solid var(--rule);border-radius:10px;padding:16px;background:var(--sheet);min-width:0}
+.axis h3{font:500 16px/1.25 var(--f-display);margin:6px 0 10px}
+.axis dl{margin:0;display:grid;gap:8px}
+.axis dt{font:500 10.5px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.axis dd{margin:2px 0 0;font-size:14px;line-height:1.5}
+@media (max-width:900px){.axes{grid-template-columns:1fr}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.two ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14.5px}
+@media (max-width:700px){.two{grid-template-columns:1fr;gap:0}}
+.nosay{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.nosay li{border:1px solid var(--risk);color:var(--ink);border-radius:6px;padding:6px 10px;font-size:13.5px;text-decoration:line-through;text-decoration-color:var(--risk);text-decoration-thickness:1.5px}
+
+/* цифры */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chart{display:grid;gap:12px;align-content:start;padding:18px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);min-width:0}
+.chart h3{margin:0;font:600 15px/1.3 var(--f-body)}
+.chart .cs{margin:-8px 0 0;color:var(--ink-2);font-size:13px}
+.brow{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;align-items:center}
+.blab{font-size:13px;color:var(--ink-2);line-height:1.3}
+.bval{font:500 12.5px/1.2 var(--f-mono);color:var(--ink);margin-top:5px;font-variant-numeric:tabular-nums}
+.stack{display:flex;gap:2px;height:26px}
+.sb{height:100%;background:var(--sc);min-width:3px;outline-offset:2px}
+.sb:last-child{border-radius:0 4px 4px 0}
+.sb[data-c="1"],.sw[data-c="1"]{--sc:var(--c1)}
+.sb[data-c="2"],.sw[data-c="2"]{--sc:var(--c2)}
+.sb[data-c="3"],.sw[data-c="3"]{--sc:var(--c3)}
+.clegend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink-2)}
+.clegend li{display:inline-flex;align-items:center;gap:6px}
+.sw{--sc:var(--ink-3);width:10px;height:10px;border-radius:2px;display:inline-block;background:var(--sc)}
+.dlab{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:13.5px}
+.dlab li{display:flex;gap:8px;align-items:baseline}
+.dlab .sw{transform:translateY(1px)}
+.cap{font-size:13px;color:var(--ink-2);margin:0;line-height:1.5}
+@media (max-width:900px){.charts{grid-template-columns:1fr}}
+@media (max-width:480px){.brow{grid-template-columns:1fr;gap:4px}}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);margin-top:14px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl.wide table{min-width:760px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule-2);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font:500 10.5px/1.25 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+td.num{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+td.src{color:var(--ink-3);font-size:13px}
+tr.warn td:first-child{box-shadow:inset 3px 0 0 var(--issue)}
+
+/* документы */
+.canon{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--rule)}
+.canon a{display:grid;gap:3px;padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);min-width:0}
+.canon a:hover b{color:var(--stamp)}
+.canon .cn{font:500 11px/1 var(--f-mono);color:var(--ink-3);letter-spacing:.06em}
+.canon b{font-size:15px}
+.canon span{color:var(--ink-2);font-size:13.5px}
+@media (max-width:820px){.canon{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.canon{grid-template-columns:1fr}}
+.filt{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.filt button{appearance:none;border:1px solid var(--rule);background:var(--sheet);color:var(--ink-2);border-radius:999px;padding:6px 12px;font:500 13px/1 var(--f-body);cursor:pointer}
+.filt button[aria-pressed="true"]{border-color:var(--stamp);color:var(--ink);background:var(--stamp-soft)}
+.who{font:500 10.5px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.drafts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.drafts li{border:1px solid var(--rule);border-radius:10px;padding:14px;background:var(--sheet);min-width:0}
+.drafts b{display:block;margin:6px 0 4px}
+.drafts p{margin:0;color:var(--ink-2);font-size:13.5px}
+@media (max-width:820px){.drafts{grid-template-columns:1fr}}
+
+/* машина */
+.car{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-block:1px solid var(--rule)}
+.car li{padding:16px 16px 18px 0;min-width:0}
+.car li+li{padding-left:16px;border-left:1px solid var(--rule)}
+.car .cc{font:700 15px/1 var(--f-display);color:var(--risk)}
+.car b{display:block;margin:8px 0 5px}
+.car span{display:block;color:var(--ink-2);font-size:13.5px;line-height:1.5}
+@media (max-width:900px){.car{grid-template-columns:1fr 1fr}.car li+li{border-left:0;padding-left:0}.car li{border-bottom:1px solid var(--rule-2)}}
+@media (max-width:520px){.car{grid-template-columns:1fr}}
+.pack{columns:2;column-gap:28px;margin:0;padding-left:18px;font-size:14.5px}
+.pack li{margin-bottom:4px;break-inside:avoid}
+@media (max-width:600px){.pack{columns:1}}
+
+/* репозиторий */
+.chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}
+.chain a{display:grid;gap:2px;padding:12px 14px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);text-decoration:none;color:var(--ink);min-width:0;flex:1 1 150px}
+.chain a.old{border-style:dashed}
+.chain a.new{border-color:var(--stamp)}
+.chain .cn{font:500 11px/1 var(--f-mono);color:var(--ink-3)}
+.chain b{font-size:14.5px}
+.chain span{font-size:13px;color:var(--ink-2)}
+.arrow{align-self:center;color:var(--ink-3);font-family:var(--f-mono)}
+.warnbox{margin-top:16px;padding:16px 18px;border:1px solid var(--issue);border-radius:10px;background:var(--sheet);display:grid;gap:6px;max-width:80ch}
+.warnbox b{font-size:15px}
+.warnbox p{margin:0;font-size:14.5px}
+.copyrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.copyrow code{font:500 13px/1.4 var(--f-mono);padding:4px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);user-select:all;overflow-wrap:anywhere}
+
+footer{margin-top:72px;border-top:1px solid var(--rule);padding-block:22px 44px;color:var(--ink-3);font-size:13px}
+footer p{margin:0 0 6px;max-width:80ch}
+.tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:var(--paper);font:500 12.5px/1.4 var(--f-body);padding:7px 10px;border-radius:6px;max-width:260px}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+</style>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="bar-case" href="#top"><span>справа</span>127/20805/26</a>
+    <nav class="bar-nav" aria-label="Разделы">
+      <a href="#tree">Древо</a><a href="#now">Сейчас</a><a href="#deadlines">Сроки</a><a href="#strategy">Стратегия</a><a href="#numbers">Цифры</a><a href="#docs">Документы</a><a href="#car">Машина</a><a href="#repo">Репозиторий</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker eyebrow">Цивільна справа · Вінницький міський суд · суддя Бессараб Н. М.</p>
+      <h1 class="case-no">127/20805/26</h1>
+      <p class="case-sub">провадження 2/127/5742/26 · истец — АТ «АКЦЕНТ-БАНК» · ответчик — вы</p>
+      <p class="lede">Банк требует <span class="n">184 532,63</span> грн. Здесь видно, где дело сейчас, куда оно может повернуть и что делать дальше.</p>
+      <div class="stamp" aria-hidden="true">после 05.10<br>данных нет</div>
+      <div class="status">
+        <div class="st"><span class="kicker">Сегодня</span><span class="st-v">04.11.2026</span><span class="st-n">Все документы до 02.10 собраны в реестр. Что было 05.10 — не записано.</span></div>
+        <div class="st"><span class="kicker">Последнее известное</span><span class="st-v">05.10.2026</span><span class="st-n">Первое заседание по видеосвязи, 10:00.</span></div>
+        <div class="st"><span class="kicker">Дальше</span><span class="st-v">«19-е»</span><span class="st-n">Повестка — со слов клиента, дата не подтверждена.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tree" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Древо дела</h2>
+        <p>Ствол — то, что уже произошло, снизу вверх по времени. Светящийся узел — где мы сейчас. Выше — ветки, по которым дело может пойти, и цель на вершине. Нажмите на любой узел.</p>
+      </div>
+      <div class="tree-grid">
+        <div class="stage" id="stage">
+          <canvas id="scene" tabindex="0" role="img" aria-label="Трёхмерное древо дела: ствол из событий с 14.06 по 05.10, текущая точка 04.11, ветки к решению, апелляции, мировому соглашению и цели. Тот же материал — в списке под древом."></canvas>
+          <div class="labels" id="labels"></div>
+          <div class="stage-ui">
+            <div class="seg" role="group" aria-label="Вид">
+              <button type="button" data-view="all" class="on">Всё древо</button>
+              <button type="button" data-view="now">Мы здесь</button>
+              <button type="button" data-view="next">Дальше</button>
+            </div>
+            <div class="seg" role="group" aria-label="Управление">
+              <button type="button" id="zin" aria-label="Приблизить">+</button>
+              <button type="button" id="zout" aria-label="Отдалить">−</button>
+              <button type="button" id="play" aria-pressed="false">Пауза</button>
+            </div>
+          </div>
+          <p class="hint">тяните — вращение · после клика колесо — масштаб</p>
+          <p class="nogl" id="nogl" hidden>Трёхмерный вид в этом браузере недоступен. Всё древо — в списке ниже.</p>
+        </div>
+        <aside class="panel" id="panel" aria-live="polite"></aside>
+      </div>
+      <ul class="legend" id="legend"></ul>
+      <details class="tlist">
+        <summary>Древо списком</summary>
+        <div id="tlist"></div>
+      </details>
+    </div>
+  </section>
+
+  <section id="now" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">По порядку</span>
+        <h2>Что нужно сделать сейчас</h2>
+        <p>Отметки сохраняются только в этом браузере.</p>
+      </div>
+      <ol class="todo">
+        <li><input type="checkbox" id="td1"><div><label for="td1"><span class="no">1</span>Скачать из кабинета всё, что пришло после 02.10</label><div class="td">Первым делом — любое заявление или ухвалу об обеспечении иска. Что именно искать — в <a data-p="ABANK/00_ТЕКУЩЕЕ/15_РЕЕСТР_ДОКУМЕНТОВ_СУДА.md">реестре, раздел В</a>.</div></div><span class="tag">сейчас</span></li>
+        <li><input type="checkbox" id="td2"><div><label for="td2"><span class="no">2</span>Сверить сроки по датам в документах</label><div class="td">Отдельная ухвала — 15 дней на жалобу. Решение — 30 дней от полного текста. Если вручили позже — просить поновлення.</div></div><span class="tag">сейчас</span></li>
+        <li><input type="checkbox" id="td3"><div><label for="td3"><span class="no">3</span>Передать документы в дело</label><div class="td">GitHub → ветка <code>claude/review-repo-github-6j5wat</code> → папка выгрузки → Add file → Upload files. Или опишите каждый документ словами: дата, название, суть.</div></div><span class="tag">сейчас</span></li>
+        <li><input type="checkbox" id="td4"><div><label for="td4"><span class="no">4</span>Закрыть репозиторий</label><div class="td">Settings → General → Danger Zone → Change visibility → Private. В открытом доступе ваши паспортные данные.</div></div><span class="tag">сейчас</span></li>
+        <li><input type="checkbox" id="td5"><div><label for="td5"><span class="no">5</span>Решить по доводу о сроке всей суммы</label><div class="td">Довод сильный, на признании самого банка. Цена — проценты на текущее тело, около <span class="n">4 тыс.</span> грн в месяц. Если откажетесь — записать в журнал.</div></div><span class="tag" data-k="you">ваше решение</span></li>
+        <li><input type="checkbox" id="td6"><div><label for="td6"><span class="no">6</span>Собирать документы о доходах</label><div class="td">Справка из кабинета налогоплательщика за 2025–2026 годы, выписки о заработке в такси, расходы. Нужны для отсрочки по ст. 435 и для переговоров.</div></div><span class="tag">параллельно</span></li>
+        <li><input type="checkbox" id="td7"><div><label for="td7"><span class="no">7</span>Одна консультация адвоката до 19-го</label><div class="td">Бесплатно — в бюро бесплатной правовой помощи. Три вопроса: срок всей суммы, ухвали от 05.10, отсрочка и машина.</div></div><span class="tag">параллельно</span></li>
+        <li><input type="checkbox" id="td8"><div><label for="td8"><span class="no">8</span>Принять PR #1 → #4 в main</label><div class="td">Сейчас main показывает устаревшую картину от 02.10.</div></div><span class="tag">параллельно</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="deadlines" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Сроки</h2>
+        <p>Первые два срока условные: они зависят от того, что суд решил 05.10. Проверяются по датам в документах кабинета.</p>
+      </div>
+      <ol class="dl">
+        <li data-s="issue"><div class="when">≈ 20.10.2026</div><span class="dot"></span><div><div class="dt">Жалоба на отдельную ухвалу</div><div class="dd">Если 05.10 огласили отказ продлить срок или возврат встречного иска — 15 дней. Вероятно, уже прошёл. Если ухвалу вручили позже, можно просить поновлення.</div></div></li>
+        <li data-s="unknown"><div class="when">04.11.2026 · сегодня</div><span class="dot"></span><div><div class="dt">Апелляция, если 05.10 огласили полное решение</div><div class="dd">30 дней истекают сегодня. Повестка на 19-е говорит, что дело, скорее всего, продолжается.</div></div></li>
+        <li data-s="client"><div class="when">«19-е» · вероятно 19.11</div><span class="dot"></span><div><div class="dt">Следующее заседание</div><div class="dd">Со слов клиента. Дату, время и режим подтвердить по повестке; перед заседанием проверить кабинет на заявления об обеспечении иска.</div></div></li>
+        <li data-s="future"><div class="when">3 дня</div><span class="dot"></span><div><div class="dt">Возражения на ответ банка 74171</div><div class="dd">С дня получения полного текста — или в срок, который назначит суд.</div></div></li>
+        <li data-s="future"><div class="when">30 дней</div><span class="dot"></span><div><div class="dt">Апелляция на решение</div><div class="dd">С даты полного текста решения. При позднем вручении — с отдельной просьбой о поновлении срока.</div></div></li>
+        <li data-s="goal"><div class="when">до 1 года</div><span class="dot"></span><div><div class="dt">Отсрочка исполнения по ст. 435</div><div class="dd">Считается с даты решения, а не после апелляции. Суд даёт её по своему усмотрению и по документам о доходах.</div></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="strategy" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Стратегия</h2>
+        <p>Коротко из действующей стратегии (PR #3). Полный текст — <a data-p="ABANK/00_ТЕКУЩЕЕ/02_СТРАТЕГИЯ.md">02_СТРАТЕГИЯ</a>.</p>
+      </div>
+      <span class="kicker">Цель клиента</span>
+      <p class="mq">Законными средствами максимально отдалить момент, когда нужно платить, и уменьшить то, что банк не доказал. Машина, которой вы зарабатываете, не должна стать ценой этого времени. Финал — посильные ежемесячные платежи, а не разовая выплата.</p>
+
+      <h3 class="sub">Как выбираем любой ход — в этом порядке</h3>
+      <ol class="order">
+        <li><span class="on">1</span><b>Машина в безопасности</b><span>Ход, который повышает риск ареста машины, без вашего решения не делаем.</span></li>
+        <li><span class="on">2</span><b>Когда реально платить</b><span>Когда по этой ветке впервые может понадобиться платёж или взыскание.</span></li>
+        <li><span class="on">3</span><b>Варианты остаются</b><span>Сохраняем возможность уменьшить сумму, обжаловать, договориться позже.</span></li>
+        <li><span class="on">4</span><b>Цена времени</b><span>Сколько стоят месяцы: проценты, сборы, риск.</span></li>
+        <li><span class="on">5</span><b>Законное основание</b><span>У каждого действия своя правовая цель, а не только время.</span></li>
+      </ol>
+
+      <div class="formula">
+        <span class="kicker">Формула для суда</span>
+        <p lang="uk">«Факт користування карткою та наданим кредитним лімітом не заперечую. Позов у заявленому розмірі не визнаю. Прошу встановити погоджені умови, підставу кожної спірної складової та настання строку її виконання».</p>
+      </div>
+
+      <h3 class="sub">Три вопроса к банку по существу</h3>
+      <div class="axes">
+        <article class="axis">
+          <span class="kicker">ось 1</span>
+          <h3>Условия и ставка</h3>
+          <dl>
+            <div><dt>Опора</dt><dd>ОП КЦС ВС № 393/126/20: паспорт кредита — преддоговорная информация, а не договор.</dd></div>
+            <div><dt>Факт</dt><dd>Паспорт подтверждён OTP — не оспариваем. Но продуктов в нём три: 46,8, 44,4 и 40,8 % годовых. Ставку 44,4 → 40,8 % банк сменил без допсоглашения.</dd></div>
+            <div><dt>Цена</dt><dd>Вероятно <span class="n">393,60</span> грн. Больше — только если суд не примет паспорт.</dd></div>
+          </dl>
+        </article>
+        <article class="axis">
+          <span class="kicker">ось 2</span>
+          <h3>«Розстрочки»</h3>
+          <dl>
+            <div><dt>Опора</dt><dd>Доказывает банк (ст. 12, 81 ЦПК). Договоров рассрочек в деле нет.</dd></div>
+            <div><dt>Факт</dt><dd>Через лимит карты списано <span class="n">113 161,42</span>, зачислено <span class="n">77 905,12</span>; <span class="n">19 186,36</span> — уже во время просрочки.</dd></div>
+            <div><dt>Цена</dt><dd>Около <span class="n">34 006</span> грн. Если банк покажет договоры — спор сужается.</dd></div>
+          </dl>
+        </article>
+        <article class="axis">
+          <span class="kicker">ось 3</span>
+          <h3>Срок всей суммы</h3>
+          <dl>
+            <div><dt>Опора</dt><dd>Ч. 4 ст. 16 Закона «Про споживче кредитування»: досрочно — только после письменного уведомления и 30 дней. Банк сам пишет: «письмово вимоги не направлялись».</dd></div>
+            <div><dt>Факт</dt><dd>Кредит на 240 месяцев. Довод правовой, новых доказательств не нужно; заявить — в первой инстанции.</dd></div>
+            <div><dt>Цена</dt><dd>При успехе сейчас ≈ <span class="n">68 512,81</span>, остальное — новым иском. Проценты на текущее тело — около <span class="n">4 тыс.</span> в месяц.</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="two">
+        <div><h3 class="sub">Не оспариваем</h3><ul><li>отношения с банком;</li><li>пользование картой и лимитом;</li><li>подтверждение паспорта кредита кодом OTP;</li><li>что платежи были.</li></ul></div>
+        <div><h3 class="sub">Не признаём автоматически</h3><ul><li><span class="n">184 532,63</span> как доказанную сумму;</li><li>какой из трёх продуктов выбран и какая ставка в каждом периоде;</li><li>что именно эта редакция Условий — часть договора;</li><li>основание каждой «Розстрочки»;</li><li>что срок всей суммы наступил.</li></ul></div>
+      </div>
+
+      <h3 class="sub">Не говорить в суде</h3>
+      <ul class="nosay">
+        <li>«Банк дал мне всего 24 тысячи»</li><li>«Я внёс 285 тысяч»</li><li>«46 927,25 — двойные проценты»</li><li>«OTP поддельный»</li><li>«Без оригинала паспорт исключат»</li><li>«Банк точно опоздал с 74171»</li><li>«Наша цель — затянуть процесс»</li><li>«Через год точно будут деньги»</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="numbers" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Цифры</h2>
+        <p>Арифметика по документам самого банка, проверена дважды независимыми скриптами. Это не правовой расчёт долга: какую сумму назвать суду, решится после квалификации продукта.</p>
+      </div>
+      <div class="charts">
+        <figure class="chart" style="margin:0">
+          <h3>Из чего состоит сумма иска</h3>
+          <p class="cs">Расчёт банка на 14.06.2026, всего <span class="n">184 532,63</span> грн</p>
+          <div class="stack" role="img" aria-label="Тело 131 434,82 и проценты 53 097,81">
+            <div class="sb" data-c="1" style="width:71.23%" tabindex="0" data-tip="Тело кредита: 131 434,82 грн (71 %)"></div>
+            <div class="sb" data-c="2" style="width:28.77%" tabindex="0" data-tip="Проценты: 53 097,81 грн (29 %)"></div>
+          </div>
+          <ul class="dlab">
+            <li><span class="sw" data-c="1"></span><span><b>Тело <span class="n">131 434,82</span></b> — текущее <span class="n">116 019,82</span> + просроченное <span class="n">15 415,00</span></span></li>
+            <li><span class="sw" data-c="2"></span><span><b>Проценты <span class="n">53 097,81</span></b> — «текущие» <span class="n">6 170,56</span> + «просроченные» <span class="n">46 927,25</span>. Это базовая ставка: двойная не применялась ни разу.</span></li>
+          </ul>
+        </figure>
+        <figure class="chart" style="margin:0">
+          <h3>С 01.01.2023: траты по карте и начисления банка</h3>
+          <p class="cs">К концу 2022 года долга не было. Одна шкала, грн</p>
+          <ul class="clegend"><li><span class="sw" data-c="1"></span>траты по карте</li><li><span class="sw" data-c="2"></span>проценты</li><li><span class="sw" data-c="3"></span>рассрочки, нетто</li></ul>
+          <div class="brow">
+            <div class="blab">Траты по карте</div>
+            <div><div class="stack"><div class="sb" data-c="1" style="width:93.59%" tabindex="0" data-tip="Траты по карте с 2023 года: 127 985,80 грн"></div></div><div class="bval">127 985,80</div></div>
+          </div>
+          <div class="brow">
+            <div class="blab">Начисления банка</div>
+            <div><div class="stack"><div class="sb" data-c="2" style="width:76.87%" tabindex="0" data-tip="Проценты с 2023 года: 105 120,94 грн"></div><div class="sb" data-c="3" style="width:23.13%" tabindex="0" data-tip="Рассрочки нетто с 2023 года: 31 635,66 грн"></div></div><div class="bval">136 756,60 = 105 120,94 + 31 635,66</div></div>
+          </div>
+          <p class="cap">За период просрочки (с 01.08.2025) трат не было, а долг вырос на <span class="n">63 291,10</span>. Часть трат, около 379 грн с 2023 года, шла из ваших собственных денег на карте (оценка ревью, не перепроверена).</p>
+        </figure>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Показатель</th><th style="text-align:right">Грн</th><th>Откуда</th></tr></thead>
+          <tbody>
+            <tr><td>Цена иска</td><td class="num">184 532,63</td><td class="src">иск банка</td></tr>
+            <tr><td>Судебный сбор, уплаченный банком</td><td class="num">2 662,40</td><td class="src">иск банка</td></tr>
+            <tr><td>Всего известных требований</td><td class="num">187 195,03</td><td class="src">03, п. 1</td></tr>
+            <tr><td>Ваши собственные взносы за всё время (не 285 тыс.)</td><td class="num">≈ 205 575</td><td class="src">выписка, 03, п. 2</td></tr>
+            <tr><td>Рассрочки: списано с лимита / зачислено</td><td class="num">113 161,42 / 77 905,12</td><td class="src">выписка, 03, п. 6</td></tr>
+            <tr><td>Реальная цена довода о рассрочках</td><td class="num">≈ 34 006</td><td class="src">03, п. 6</td></tr>
+            <tr><td>Вероятная цена довода о ставке</td><td class="num">393,60</td><td class="src">03, п. 4</td></tr>
+            <tr><td>При успехе довода о сроке всей суммы — сейчас</td><td class="num">≈ 68 512,81</td><td class="src">03, п. 9</td></tr>
+            <tr><td>Апелляционный сбор (электронно)</td><td class="num">≈ 3 993,60</td><td class="src">03, п. 9</td></tr>
+            <tr><td>Жалоба на отдельную ухвалу</td><td class="num">≈ 532,48</td><td class="src">03, п. 9</td></tr>
+            <tr><td>Исполнительный сбор 10 %</td><td class="num">≈ 18 719,50</td><td class="src">ст. 27 Закона «Про виконавче провадження»</td></tr>
+            <tr><td>Последний платёж клиента (19.01.2026)</td><td class="num">1 000,00</td><td class="src">03, п. 7</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="docs" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Документы</h2>
+        <p>Ссылки ведут в репозиторий на GitHub. Сначала — действующий канон, затем все судебные документы, затем черновики.</p>
+      </div>
+      <span class="kicker">Канон дела</span>
+      <nav class="canon" aria-label="Канон дела" style="margin-top:8px">
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/01_ГДЕ_МЫ_СЕЙЧАС.md"><span class="cn">01</span><b>Где мы сейчас</b><span>Текущая точка и следующий ход</span></a>
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/02_СТРАТЕГИЯ.md"><span class="cn">02</span><b>Стратегия</b><span>Цель и вся партия до исполнения</span></a>
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/13_КАРТА_ФАКТОВ_И_НЕИЗВЕСТНОГО.md"><span class="cn">13</span><b>Факты и неизвестное</b><span>Что доказано, что нет</span></a>
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/12_ЕДИНЫЙ_ПЛАН_ПЕРВОГО_ЗАСЕДАНИЯ.md"><span class="cn">12</span><b>План заседания</b><span>Фразы, развилки, ответы на вопросы</span></a>
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/14_CAR_PROTOCOL.md"><span class="cn">14</span><b>Протокол по машине</b><span>Что делать при аресте</span></a>
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/15_РЕЕСТР_ДОКУМЕНТОВ_СУДА.md"><span class="cn">15 · новое</span><b>Реестр документов</b><span>32 позиции и чек-лист для кабинета</span></a>
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/03_ЦИФРЫ.md"><span class="cn">03</span><b>Цифры</b><span>Арифметика по выписке</span></a>
+        <a data-p="ABANK/00_ТЕКУЩЕЕ/09_ПРАВОВАЯ_БАЗА_V3.md"><span class="cn">09</span><b>Правовая база</b><span>Нормы и практика со статусом проверки</span></a>
+        <a data-p="ЖУРНАЛ.md"><span class="cn">журнал</span><b>Хронология</b><span>События и ваши решения</span></a>
+      </nav>
+
+      <div class="filt" role="group" aria-label="Чьи документы">
+        <button type="button" data-who="all" aria-pressed="true">Все</button>
+        <button type="button" data-who="court" aria-pressed="false">Суд</button>
+        <button type="button" data-who="bank" aria-pressed="false">Банк</button>
+        <button type="button" data-who="client" aria-pressed="false">Вы</button>
+      </div>
+      <div class="tbl wide">
+        <table id="regtable">
+          <thead><tr><th>Дата</th><th>Документ</th><th>Чей</th><th>Номер</th><th>Состояние</th></tr></thead>
+          <tbody>
+            <tr data-who="bank"><td class="n">14.06.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0002_Д001_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf">Позовна заява</a> · <a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0002_Д002_2026-06-15_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf">додатки</a></td><td class="who">банк</td><td class="n">58265/26-Вх</td><td>зарегистрирован</td></tr>
+            <tr data-who="court"><td class="n">15.06.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0001_2026-06-15_Фіксація автоматизованого розподілу справ_127-20805-26_2-127-5742-26.html">Протокол автоматизованого розподілу</a></td><td class="who">суд</td><td>—</td><td>суддя Бессараб Н. М.</td></tr>
+            <tr data-who="court"><td class="n">25.06.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0003_2026-06-25_Ухвала про відкриття провадження у справі_127-20805-26_2-127-5742-26.html">Ухвала про відкриття провадження</a></td><td class="who">суд</td><td>—</td><td>доставлена 27.06, 02:25</td></tr>
+            <tr data-who="court"><td class="n">30.06.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0007_2026-06-30_Судова повістка про виклик в суд_127-20805-26_2-127-5742-26.html">Повістка на 29.07, зал 35</a></td><td class="who">суд</td><td>—</td><td>доставлена 02.07</td></tr>
+            <tr data-who="client" class="warn"><td class="n">02.07.2026</td><td><a data-p="ABANK/повестка в суд/Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080 (1).pdf">Заява про участь у ВКЗ</a></td><td class="who">вы</td><td class="n">кв. 7809390</td><td>только банку, 22:01</td></tr>
+            <tr data-who="client" class="warn"><td class="n">02.07.2026</td><td><a data-p="ABANK/повестка в суд/Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080.pdf">Відзив на позовну заяву</a></td><td class="who">вы</td><td class="n">кв. 7809726</td><td>только банку, 23:03</td></tr>
+            <tr data-who="client" class="warn"><td class="n">09.07.2026</td><td><a data-p="ABANK/встречный иск/Зустрічний позов (справа 127-20805-26) — ФІНАЛ 09.07.pdf">Зустрічний позов</a> · <a data-p="ABANK/встречный иск/Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080.pdf">квитанція</a></td><td class="who">вы</td><td class="n">кв. 7900097</td><td>только банку, 13:36</td></tr>
+            <tr data-who="client" class="warn"><td class="n">22.07.2026</td><td><a data-p="ABANK/клопотання про витребування доказів/Картка руху — Клопотання про витребування доказів (подано 22.07.2026).pdf">Клопотання про витребування доказів</a></td><td class="who">вы</td><td>—</td><td>только банку, 17:20</td></tr>
+            <tr data-who="bank" class="warn"><td class="n">27.07.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0008_2026-07-27_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html">Відповідь на відзив</a></td><td class="who">банк</td><td class="n">74171/26-Вх</td><td>только карточка, текста нет</td></tr>
+            <tr data-who="client"><td class="n">29.07.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0009_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html">Заява про участь у ВКЗ</a></td><td class="who">вы</td><td class="n">75356/26-Вх</td><td>зарегистрирована</td></tr>
+            <tr data-who="client"><td class="n">29.07.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0010_Д001_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.pdf">Відзив (коротка версія)</a></td><td class="who">вы</td><td class="n">75363/26-Вх</td><td>зарегистрирован с опозданием</td></tr>
+            <tr data-who="client"><td class="n">29.07.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/0011_2026-07-29_Реєстраційна картка вхідного документу_127-20805-26_2-127-5742-26.html">Додаткові пояснення (про збір)</a></td><td class="who">вы</td><td class="n">75447/26-Вх</td><td>зарегистрированы</td></tr>
+            <tr data-who="client"><td class="n">29.07.2026</td><td><a data-p="ABANK/встречный иск/Зустрічний позов (справа 127-20805-26) — ФІНАЛ 09.07.pdf">Зустрічний позов</a></td><td class="who">вы</td><td class="n">75449/26-Вх</td><td>зарегистрирован; карточки в выгрузке нет</td></tr>
+            <tr data-who="client"><td class="n">29.07.2026</td><td><a data-p="ABANK/клопотання про витребування доказів/Клопотання про витребування доказів (справа 127-20805-26).docx">Клопотання про витребування доказів</a></td><td class="who">вы</td><td class="n">75452/26-Вх</td><td>зарегистрировано; карточки нет</td></tr>
+            <tr data-who="court"><td class="n">30.07.2026</td><td><a data-p="ABANK/копии ответов и разынх документов с сайта эелекторнный суд/Ухвала ЦПК одноособово.html">Ухвала про участь у ВКЗ</a></td><td class="who">суд</td><td>—</td><td>на 05.10 и далее</td></tr>
+            <tr data-who="client"><td class="n">02.10.2026</td><td><a data-p="ABANK/00_ТЕКУЩЕЕ/подано/2026-10-02_Заява_про_продовження_строку/Текст_як_подано.txt">Заява про продовження процесуального строку</a></td><td class="who">вы</td><td>не известен</td><td>отправлена; регистрация не подтверждена</td></tr>
+            <tr data-who="court" class="warn"><td>после 02.10</td><td>Ухвали 05.10, протокол, повістка на «19», повний текст 74171</td><td class="who">суд</td><td>—</td><td>не скачаны</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">Черновики — не поданы</h3>
+      <ul class="drafts">
+        <li><span class="kicker">Д1 · история</span><b><a data-p="ABANK/00_ТЕКУЩЕЕ/V3_ПАКЕТ/1_ДО_05-10_подать/Д1_Клопотання_до_засідання_05-10.txt">Клопотання до 05.10</a></b><p>Не подавалось. Довод об оригинале паспорта ослаблен ревью.</p></li>
+        <li><span class="kicker">Д3 · с предупреждением</span><b><a data-p="ABANK/00_ТЕКУЩЕЕ/V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д3_Заперечення_ЗАГОТОВКА.txt">Заперечення на 74171</a></b><p>Заполнить по тексту ответа банка. Суммы из раздела 2 пока не использовать.</p></li>
+        <li><span class="kicker">Д4 · каркас</span><b><a data-p="ABANK/00_ТЕКУЩЕЕ/V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д4_Апеляційна_скарга_КАРКАС.txt">Апеляційна скарга</a></b><p>Только после решения и только по реальным ошибкам.</p></li>
+        <li><span class="kicker">Д5 · заготовка</span><b><a data-p="ABANK/00_ТЕКУЩЕЕ/V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д5_Заява_ст435_відстрочка_ЗАГОТОВКА.txt">Заява про відстрочення, ст. 435</a></b><p>После вступления решения в силу, с документами о доходах.</p></li>
+        <li><span class="kicker">Д6 · по вашему решению</span><b><a data-p="ABANK/00_ТЕКУЩЕЕ/V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д6_Запит_до_банку_документи.txt">Запит до банку</a></b><p>Запрос договоров и рассрочек — по ч. 1 ст. 13 Закона.</p></li>
+        <li><span class="kicker">Д7 · с предупреждением</span><b><a data-p="ABANK/00_ТЕКУЩЕЕ/V3_ПАКЕТ/2_ПОСЛЕ_05-10_заготовки/Д7_Пропозиція_врегулювання_ЗАГОТОВКА.txt">Пропозиція врегулювання</a></b><p>Переработать перед отправкой: тезис «долг заморожен» отменён.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="car" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Машина</h2>
+        <p>Машина нужна для работы в такси, и любой её арест для вас неприемлем. Гарантировать, что ареста не будет, нельзя. Можно вовремя заметить угрозу и сразу ответить. Подробно — <a data-p="ABANK/00_ТЕКУЩЕЕ/14_CAR_PROTOCOL.md">протокол 14</a>.</p>
+      </div>
+      <ol class="car">
+        <li><span class="cc">C0</span><b>Мер нет</b><span>Обычная защита. Перед каждым заседанием — проверка кабинета. Машину ни на кого не переоформлять: такую сделку суд может признать недействительной.</span></li>
+        <li><span class="cc">C1</span><b>Банк просит арест</b><span>Возражать по существу: есть ли реальный риск, соразмерна ли мера, почему именно машина, как арест лишит дохода от такси.</span></li>
+        <li><span class="cc">C2</span><b>Арест наложен</b><span>Получить полный текст ухвали, проверить срок обжалования, просить отмены или замены меры, приложить доказательства работы.</span></li>
+        <li><span class="cc">C3</span><b>Исполнительное производство</b><span>Постановление, аресты счетов и имущества, обжалование действий исполнителя, срочный график или соглашение.</span></li>
+      </ol>
+      <h3 class="sub">Папка доказательств — собрать заранее, отдавать только под конкретный вопрос</h3>
+      <ul class="pack">
+        <li>свидетельство о регистрации машины;</li><li>документы о праве собственности;</li><li>регистрация в сервисах такси;</li><li>история поездок за показательный период;</li><li>выплаты от агрегаторов;</li><li>выписки, где видны поступления от работы;</li><li>налоговые документы, если есть;</li><li>расходы, без которых работа невозможна.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="repo" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Репозиторий и версии</h2>
+        <p>Каждая проработка открыта отдельным PR поверх предыдущей. Действующая версия — PR #3, сверху — сегодняшний PR #4.</p>
+      </div>
+      <div class="chain">
+        <a class="old" href="https://github.com/FARTOFALOS/advokat"><span class="cn">main · 02.10</span><b>Устаревшая картина</b><span>«24 тыс. — деньги банка» и т. п.</span></a>
+        <span class="arrow" aria-hidden="true">→</span>
+        <a href="https://github.com/FARTOFALOS/advokat/pull/1"><span class="cn">PR #1 · 03.10</span><b>V3</b><span>Стратегия, документы к 05.10</span></a>
+        <span class="arrow" aria-hidden="true">→</span>
+        <a href="https://github.com/FARTOFALOS/advokat/pull/2"><span class="cn">PR #2 · 04.10</span><b>V3.1</b><span>Пересчёт и второе мнение</span></a>
+        <span class="arrow" aria-hidden="true">→</span>
+        <a href="https://github.com/FARTOFALOS/advokat/pull/3"><span class="cn">PR #3 · 05.10</span><b>Канон</b><span>01 → 02 → 13 → 12 → 14</span></a>
+        <span class="arrow" aria-hidden="true">→</span>
+        <a class="new" href="https://github.com/FARTOFALOS/advokat/pull/4"><span class="cn">PR #4 · 04.11</span><b>Реестр и эта страница</b><span>Пробел после 05.10</span></a>
+      </div>
+      <div class="warnbox">
+        <b>Репозиторий сейчас публичный</b>
+        <p>В приложениях банка открытым текстом лежат серия и номер паспорта, кем и когда выдан, РНОКПП, дата рождения, адрес и IBAN. Этого достаточно, чтобы оформить займ на ваше имя. Claude и Codex продолжат работать через свои приложения GitHub и с закрытым репозиторием.</p>
+        <div class="copyrow"><code id="vispath">Settings → General → Danger Zone → Change visibility → Private</code><button type="button" class="btn" id="copyvis">Скопировать путь</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Подготовлено ИИ-ассистентом по материалам репозитория FARTOFALOS/advokat на 04.11.2026. Практикующий адвокат материалы не проверял.</p>
+    <p>Страница для вас. В суд и банку её не направлять.</p>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip" hidden></div>
+
+<script>
+(function(){
+'use strict';
+var docEl=document.documentElement;
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function nb(s){return String(s).replace(/(\d) (?=\d{3}\b)/g,'$1 ');}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+var GH='https://github.com/FARTOFALOS/advokat/blob/claude/review-repo-github-6j5wat/';
+function gh(p){return GH+encodeURI(p);}
+
+/* ссылки на файлы репозитория */
+$$('a[data-p]').forEach(function(a){a.href=gh(a.getAttribute('data-p'));a.target='_blank';a.rel='noopener';});
+$$('a[href^="https://github.com"]').forEach(function(a){a.target='_blank';a.rel='noopener';});
+
+/* ---------- данные древа ---------- */
+var EX='ABANK/копии ответов и разынх документов с сайта эелекторнный суд/';
+var SX='_127-20805-26_2-127-5742-26';
+var CU='ABANK/00_ТЕКУЩЕЕ/';
+var KV='ABANK/повестка в суд/Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080';
+function card(n,d,ext){return EX+n+'_'+d+'_Реєстраційна картка вхідного документу'+SX+ext;}
+var STATUS={
+  fact:{t:'Факт',tok:'--fact'},
+  issue:{t:'Проблема',tok:'--issue'},
+  unknown:{t:'Неизвестно',tok:'--unknown'},
+  client:{t:'Со слов клиента',tok:'--client'},
+  now:{t:'Мы здесь',tok:'--stamp'},
+  possible:{t:'Возможный исход',tok:'--unknown'},
+  future:{t:'Дальше',tok:'--future'},
+  goal:{t:'Цель',tok:'--goal'},
+  risk:{t:'Риск',tok:'--risk'}
+};
+var LEGEND=['fact','issue','unknown','client','now','possible','future','goal','risk'];
+
+var NODES=[
+ {id:'s1',date:'14.06.2026',title:'Иск банка',s:'fact',size:.36,pri:4,
+  text:['АТ «АКЦЕНТ-БАНК» подал иск на 184 532,63 грн: тело кредита 131 434,82 и проценты 53 097,81. Пеня и штраф — 0. Плюс судебный сбор 2 662,40.','Банк просил рассматривать дело без своего представителя и требует весь кредит досрочно (ч. 2 ст. 1050 ЦК). В иске сам указал: «письмово вимоги не направлялись».'],
+  docs:[['Иск банка',card('0002_Д001','2026-06-15','.pdf')],['Приложения к иску',card('0002_Д002','2026-06-15','.pdf')]]},
+ {id:'s2',date:'15.06.2026',title:'Регистрация и судья',s:'fact',size:.26,pri:2,
+  text:['Иск зарегистрирован под вх. № 58265/26-Вх. Автоматическое распределение — суддя Бессараб Н. М.'],
+  docs:[['Протокол распределения',EX+'0001_2026-06-15_Фіксація автоматизованого розподілу справ'+SX+'.html'],['Карточка 58265/26-Вх',card('0002','2026-06-15','.html')]]},
+ {id:'s3',date:'25.06.2026',title:'Ухвала про відкриття',s:'fact',size:.3,pri:3,
+  text:['Упрощённое производство с вызовом сторон; суд признал дело малозначным. Отзыв — 15 дней с вручения, ответ банка — 3 дня, возражения — 3 дня с получения ответа.','Ухвала пришла в электронный кабинет 27.06 в 02:25.'],
+  docs:[['Ухвала від 25.06.2026',EX+'0003_2026-06-25_Ухвала про відкриття провадження у справі'+SX+'.html']]},
+ {id:'s4',date:'02.07.2026',title:'Отзыв ушёл только банку',s:'issue',size:.3,pri:3,
+  text:['Отзыв и заявление о видеосвязи доставлены банку: квитанции 7809390 (22:01) и 7809726 (23:03). Второй шаг «Підписати та відправити до суду» не выполнен — суд их не получил.'],
+  docs:[['Квитанция 7809390',KV+' (1).pdf'],['Квитанция 7809726',KV+'.pdf']]},
+ {id:'s5',date:'09.07.2026',title:'Встречный иск — только банку',s:'issue',size:.28,pri:2,
+  text:['Встречный иск о 7 170,44 грн комиссий и пояснения о сборе доставлены банку (квитанция 7900097, 13:36). В суд в тот день не ушли.'],
+  docs:[['Встречный иск',"ABANK/встречный иск/Зустрічний позов (справа 127-20805-26) — ФІНАЛ 09.07.pdf"],['Квитанция 7900097','ABANK/встречный иск/Квитанція про надсилання стороні АКЦІОНЕРНЕ ТОВАРИСТВО _АКЦЕНТ-БАНК_ 14360080.pdf']]},
+ {id:'s6',date:'13–14.07.2026',title:'Срок отзыва истёк',s:'issue',size:.24,pri:2,
+  text:['Последний день для отзыва и встречного иска — 13 или 14 июля: зависит от того, считать ли вручением субботу 27.06 или понедельник 29.06.']},
+ {id:'s7',date:'22.07.2026',title:'Ходатайство — только банку',s:'issue',size:.24,pri:1,
+  text:['Ходатайство об истребовании доказательств доставлено банку в 17:20. В суд — только 29.07.'],
+  docs:[['Карточка движения 22.07','ABANK/клопотання про витребування доказів/Картка руху — Клопотання про витребування доказів (подано 22.07.2026).pdf']]},
+ {id:'s8',date:'27.07.2026',title:'Ответ банка 74171',s:'unknown',size:.3,pri:4,
+  text:['Суд зарегистрировал ответ банка на отзыв: вх. № 74171/26-Вх, 6 листов, «пошта». Исходящая дата в карточке — 27.07, через 25 дней после получения отзыва при сроке 3 дня.','Текста у нас нет: полный документ с приложениями вы не получали. Это главный информационный пробел.'],
+  docs:[['Карточка 74171/26-Вх',card('0008','2026-07-27','.html')]]},
+ {id:'s9',date:'29.07.2026',title:'Документы поданы в суд',s:'fact',size:.32,pri:3,
+  text:['Заседание не состоялось. В тот же день ваши документы дошли до суда — с опозданием на 15–16 дней: видеосвязь 75356, отзыв 75363, пояснения 75447, встречный иск 75449, ходатайство 75452.','В зарегистрированном отзыве осталась ошибка про «двойную ставку» — её исправляем устно.'],
+  docs:[['Отзыв 75363',card('0010_Д001','2026-07-29','.pdf')],['Карточка 75356',card('0009','2026-07-29','.html')],['Карточка 75447',card('0011','2026-07-29','.html')]]},
+ {id:'s10',date:'30.07.2026',title:'Видеосвязь разрешена',s:'fact',size:.24,pri:1,
+  text:['Ухвала: участие по видеосвязи на 05.10.2026 в 10:00 и на всех следующих заседаниях.'],
+  docs:[['Ухвала від 30.07.2026',EX+'Ухвала ЦПК одноособово.html']]},
+ {id:'s11',date:'01.10.2026',title:'Аудит дела',s:'fact',size:.22,pri:1,
+  text:['Вторая проработка: аудит, досье и проекты P01–P07. Ни один проект не подан.'],
+  docs:[['Аудит 01.10','ABANK/audit/2026-10-01/АУДИТ_ПЕРЕД_05-10-2026.md']]},
+ {id:'s12',date:'02.10.2026',title:'Заявление о продлении срока',s:'fact',size:.3,pri:4,
+  text:['Вы сами подписали и отправили заявление: признать причины уважительными, продлить срок для отзыва и встречного иска до 29.07, принять документы.','Регистрация и входящий номер не подтверждены — проверить в кабинете.'],
+  docs:[['Текст как подано',CU+'подано/2026-10-02_Заява_про_продовження_строку/Текст_як_подано.txt']]},
+ {id:'s13',date:'03–05.10.2026',title:'План к заседанию',s:'fact',size:.22,pri:1,
+  text:['Проработки V3, V3.1 и канон PR #3: цифры перепроверены, двойная ставка не применялась, единый план заседания и протокол по машине. Ходатайство Д1 от 04.10 не подавалось.'],
+  docs:[['Где мы сейчас (01)',CU+'01_ГДЕ_МЫ_СЕЙЧАС.md'],['План заседания (12)',CU+'12_ЕДИНЫЙ_ПЛАН_ПЕРВОГО_ЗАСЕДАНИЯ.md']]},
+ {id:'h05',date:'05.10.2026',title:'Первое заседание',s:'unknown',size:.46,pri:9,pos:[0,.8,0],
+  text:['Заседание по видеосвязи в 10:00. Что решил суд — в репозитории не записано: документы кабинета после 02.10 не скачаны.','Суд должен был решить: продлевать ли срок, принимать ли отзыв, встречный иск и ходатайство, дать ли ответ банка 74171.'],
+  todo:['Скачать ухвали и протокол от 05.10','Проверить, была ли отдельная ухвала: на жалобу 15 дней'],
+  docs:[['Чек-лист для кабинета (15, раздел В)',CU+'15_РЕЕСТР_ДОКУМЕНТОВ_СУДА.md']]},
+ {id:'b1',date:'05.10 · вариант',title:'Отзыв и встречный иск приняты',s:'possible',size:.26,pri:4,
+  text:['Если суд продлил срок и принял встречный иск — переход в общее производство: подготовительное заседание, отзыв банка на встречный иск. Самый длинный законный маршрут.']},
+ {id:'b2',date:'05.10 · вариант',title:'Отзыв принят, встречный возвращён',s:'possible',size:.26,pri:4,
+  text:['Упрощённое производство продолжается: получить ответ банка 74171, подать возражения, затем решение. Защита по существу от встречного иска не зависит.']},
+ {id:'b3',date:'05.10 · вариант',title:'Срок не продлён',s:'possible',size:.26,pri:4,
+  text:['Отзыв остаётся без рассмотрения, суд решает по материалам банка. Устные пояснения и правовые доводы всё равно можно заявить.','Отдельную ухвалу об отказе обжалуют за 15 дней (сбор ≈ 532,48 грн): при оглашении 05.10 — до 20.10.']},
+ {id:'now',date:'04.11.2026',title:'Мы здесь',s:'now',size:.52,pri:10,pos:[0,3.2,0],
+  text:['Всё до 02.10 собрано в реестр: 32 документа, 13 пробелов. Исход 05.10 неизвестен. По вашим словам, в кабинете новые документы, в том числе повестка «на 19 число».','Ход № 1 — скачать из кабинета всё после 02.10. Первым делом проверить, нет ли заявления или ухвали об обеспечении иска.'],
+  todo:['Скачать документы после 02.10','Загрузить их на GitHub или описать словами','Закрыть репозиторий'],
+  docs:[['Реестр документов (15)',CU+'15_РЕЕСТР_ДОКУМЕНТОВ_СУДА.md'],['Журнал','ЖУРНАЛ.md']]},
+ {id:'h19',date:'«19-е»',title:'Заседание по повестке',s:'client',size:.34,pri:8,pos:[.7,4.7,.3],
+  text:['Со слов клиента — повестка «на 19 число». Месяц, время и вид не подтверждены; вероятно, 19.11.2026.','Перед заседанием — проверить кабинет на новые ухвали и любое заявление об обеспечении иска.'],
+  docs:[['Протокол по машине (14)',CU+'14_CAR_PROTOCOL.md']]},
+ {id:'m0',date:'по существу',title:'Три вопроса к банку',s:'future',size:.34,pri:6,pos:[0,6.1,0],
+  text:['Пользование картой и лимитом не отрицаем. Иск в заявленном размере не признаём: спорим о доказанности условий, об основаниях «Розстрочек» и о наступлении срока всей суммы.'],
+  docs:[['Стратегия (02)',CU+'02_СТРАТЕГИЯ.md']]},
+ {id:'m1',date:'ось 1',title:'Условия и ставка',s:'future',size:.28,pri:5,
+  text:['Паспорт кредита подтверждён кодом OTP 18.11.2020 — это не оспариваем. Но в нём три продукта: 46,8, 44,4 и 40,8 % годовых, и какой выбран — не видно. Ставку 44,4 → 40,8 % банк сменил без допсоглашения.','Вероятная цена довода — 393,60 грн. Больше — только если суд не примет паспорт как доказательство.']},
+ {id:'m2',date:'ось 2',title:'«Розстрочки»',s:'future',size:.28,pri:5,
+  text:['Через лимит карты списано 113 161,42 грн по трём отдельным кредитам «Розстрочка», зачислено 77 905,12. Договоров в деле нет; 19 186,36 списано уже во время просрочки.','Реальная цена довода — около 34 006 грн. Если банк покажет договоры, спор сужается до их содержания.']},
+ {id:'m3',date:'ось 3',title:'Срок всей суммы',s:'future',size:.3,pri:5,
+  text:['Кредит на 240 месяцев. Потребовать всё досрочно банк может только после письменного уведомления и 30 дней (ч. 4 ст. 16 Закона «Про споживче кредитування»). Банк сам написал: «письмово вимоги не направлялись».','При успехе сейчас ≈ 68 512,81 грн, остальное — только новым иском. Цена: на текущее тело могут идти проценты, около 4 тыс. грн в месяц. Заявить нужно в первой инстанции.']},
+ {id:'d1',date:'решение',title:'Решение первой инстанции',s:'future',size:.36,pri:7,pos:[0,9.1,0],
+  text:['Сразу узнать дату составления полного текста: от неё считаются 30 дней на апелляцию.','Если суд готов решать, можно просить порядок исполнения по ст. 267 — только с документами о доходах и без риска для машины.']},
+ {id:'a1',date:'апелляция',title:'Апелляция',s:'future',size:.32,pri:6,pos:[-1.7,10.7,.5],
+  text:['Только по реальным ошибкам решения. Сбор ≈ 3 993,60 грн при электронной подаче; можно просить отсрочку уплаты. Пока идёт апелляция, решение не вступает в силу.','Кассация по малозначному делу почти закрыта.']},
+ {id:'g1',date:'мост',title:'Мировое или отсрочка',s:'future',size:.32,pri:6,pos:[.5,12.3,-.6],
+  text:['Мировое соглашение — на любой стадии (ст. 207 ЦПК): фиксированная сумма, без новых начислений, пауза, затем ежемесячные платежи.','Отсрочка по ст. 435 — до года с даты решения, по усмотрению суда и по документам о доходах.']},
+ {id:'goal',date:'цель',title:'Посильные платежи, машина цела',s:'goal',size:.52,pri:9,pos:[0,14.2,0],
+  text:['Законно отдалить момент, когда нужно платить, уменьшить недоказанное и прийти к посильным ежемесячным платежам — без ареста машины, которой вы зарабатываете.']},
+ {id:'r1',date:'риск',title:'Исполнительное производство',s:'risk',size:.34,pri:8,pos:[6.4,7.2,-2.2],
+  text:['Если решение вступило в силу, а соглашения нет: исполнительный сбор 10 % (≈ 18 719,50 грн), арест счетов и имущества, в том числе машины.','Цель стратегии — не доводить до этого: заплатить или договориться раньше.'],
+  docs:[['Протокол по машине (14)',CU+'14_CAR_PROTOCOL.md']]},
+ {id:'car',date:'ограничение',title:'Машина — без ареста',s:'risk',shape:'square',size:.3,pri:7,pos:[5.6,3.7,2.5],
+  text:['Машина нужна для работы в такси, любой её арест неприемлем. Перед каждым заседанием — проверка кабинета на заявления об обеспечении иска.','Переоформлять машину нельзя: такую сделку суд может признать недействительной.'],
+  docs:[['Протокол по машине (14)',CU+'14_CAR_PROTOCOL.md']]}
+];
+var byId={}; NODES.forEach(function(n){byId[n.id]=n;});
+var TRUNK=['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13'];
+var TY=[-11,-10.1,-9.2,-8.3,-7.4,-6.6,-5.8,-5,-4.1,-3.2,-2.3,-1.4,-.5];
+TRUNK.forEach(function(id,i){var a=.9+i*.74,r=2.8*(1-i/14);byId[id].pos=[r*Math.cos(a),TY[i],r*Math.sin(a)];});
+[['b1',.4],['b2',2.5],['b3',4.6]].forEach(function(o){byId[o[0]].pos=[3.2*Math.cos(o[1]),2,3.2*Math.sin(o[1])];});
+[['m1',1.1],['m2',3.2],['m3',5.3]].forEach(function(o){byId[o[0]].pos=[3.4*Math.cos(o[1]),7.6,3.4*Math.sin(o[1])];});
+var ORDER=TRUNK.concat(['h05','b1','b2','b3','now','h19','m0','m1','m2','m3','d1','a1','g1','goal','r1','car']);
+var EDGES=[
+ ['h05','b1','possible'],['h05','b2','possible'],['h05','b3','possible'],
+ ['b1','now','possible'],['b2','now','possible'],['b3','now','possible'],
+ ['now','h19','client'],['h19','m0','future'],
+ ['m0','m1','future'],['m0','m2','future'],['m0','m3','future'],
+ ['m1','d1','future'],['m2','d1','future'],['m3','d1','future'],
+ ['d1','a1','future'],['a1','g1','future'],['d1','g1','future'],['g1','goal','goal'],
+ ['d1','r1','risk'],['a1','r1','risk'],['now','car','car'],['car','r1','car']
+];
+
+/* ---------- легенда и список ---------- */
+$('#legend').innerHTML=LEGEND.map(function(k){return '<li><i class="g" data-s="'+k+'"></i>'+esc(STATUS[k].t)+'</li>';}).join('');
+var GROUPS=[['Пройдено',TRUNK],['Развилка 05.10',['h05','b1','b2','b3']],['Сейчас',['now','h19']],['Дальше',['m0','m1','m2','m3','d1','a1','g1','goal']],['Риски',['r1','car']]];
+$('#tlist').innerHTML=GROUPS.map(function(g){
+  return '<div class="tl-group"><h3 class="kicker">'+esc(g[0])+'</h3><ul class="tl">'+g[1].map(function(id){var n=byId[id];
+    return '<li><span class="tl-d">'+esc(n.date)+'</span><div><button type="button" data-id="'+n.id+'"><i class="g" data-s="'+n.s+'"></i>'+esc(n.title)+'</button><p>'+esc(nb(n.text[0]))+'</p></div></li>';}).join('')+'</ul></div>';
+}).join('');
+
+/* ---------- панель ---------- */
+var panel=$('#panel'), selectedId='now';
+function renderPanel(n){
+  var h='<div class="p-head"><span class="p-date">'+esc(n.date)+'</span><span class="chip"><i class="g" data-s="'+n.s+'"></i>'+esc(STATUS[n.s].t)+'</span></div>';
+  h+='<h3 class="p-title">'+esc(n.title)+'</h3>';
+  h+=n.text.map(function(p){return '<p>'+esc(nb(p))+'</p>';}).join('');
+  if(n.todo){h+='<h4 class="kicker">Что сделать</h4><ul class="p-list">'+n.todo.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';}
+  if(n.docs){h+='<h4 class="kicker">Документы</h4><ul class="p-list">'+n.docs.map(function(d){return '<li><a href="'+esc(gh(d[1]))+'" target="_blank" rel="noopener">'+esc(d[0])+'</a></li>';}).join('')+'</ul>';}
+  var i=ORDER.indexOf(n.id);
+  h+='<div class="p-nav"><button type="button" class="btn" data-go="-1"'+(i<=0?' disabled':'')+'>← Раньше</button><button type="button" class="btn" data-go="1"'+(i>=ORDER.length-1?' disabled':'')+'>Дальше →</button></div>';
+  panel.innerHTML=h;
+}
+panel.addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(!b)return;var i=ORDER.indexOf(selectedId)+Number(b.getAttribute('data-go'));if(i>=0&&i<ORDER.length)select(byId[ORDER[i]],true);});
+
+/* ---------- 3D-сцена на canvas ---------- */
+var stage=$('#stage'), cv=$('#scene'), ctx=cv.getContext&&cv.getContext('2d'), labelsEl=$('#labels');
+var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+var W=1,H=1,F=1,FOV=40*Math.PI/180, uiRects=[];
+var cam={yaw:.55,pitch:.2,dist:44,tx:0,ty:1.4,tz:0};
+var tween=null, playing=!reduce, t=0, lastTs=0, lastInteract=-1e9, dirty=true, visible=true, hoverId=null, drag=null;
+var C={}, sprites={};
+var cyy=1,syy=0,cpp=1,spp=0;
+var FONT='"IBM Plex Sans",system-ui,sans-serif';
+
+function cssv(k){return getComputedStyle(docEl).getPropertyValue(k).trim();}
+function hex(h){h=(h||'#888888').replace('#','');if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];var n=parseInt(h,16);if(isNaN(n))n=0x888888;return [n>>16&255,n>>8&255,n&255];}
+function rgba(h,a){var c=hex(h);return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';}
+function mix(h1,h2,k){var a=hex(h1),b=hex(h2);return 'rgb('+Math.round(a[0]+(b[0]-a[0])*k)+','+Math.round(a[1]+(b[1]-a[1])*k)+','+Math.round(a[2]+(b[2]-a[2])*k)+')';}
+function readTheme(){['--fact','--issue','--unknown','--client','--stamp','--future','--goal','--risk','--ink','--ink-2','--ink-3','--rule','--scene','--scene-2','--sheet'].forEach(function(k){C[k]=cssv(k)||'#888888';});sprites={};dirty=true;}
+function sprite(h){if(sprites[h])return sprites[h];var c=document.createElement('canvas');c.width=c.height=64;var g=c.getContext('2d');var gr=g.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,rgba(h,.55));gr.addColorStop(.35,rgba(h,.2));gr.addColorStop(1,rgba(h,0));g.fillStyle=gr;g.fillRect(0,0,64,64);sprites[h]=c;return c;}
+function col(n){return C[STATUS[n.s].tok];}
+
+function bez(a,c,b,k){var u=1-k;return [u*u*a[0]+2*u*k*c[0]+k*k*b[0],u*u*a[1]+2*u*k*c[1]+k*k*b[1],u*u*a[2]+2*u*k*c[2]+k*k*b[2]];}
+function ctrl(a,b,i){var m=[(a[0]+b[0])/2,(a[1]+b[1])/2,(a[2]+b[2])/2],dx=b[0]-a[0],dy=b[1]-a[1],dz=b[2]-a[2],len=Math.sqrt(dx*dx+dy*dy+dz*dz),hx=m[0],hz=m[2],hl=Math.sqrt(hx*hx+hz*hz);if(hl<.35){var an=i*2.39996;hx=Math.cos(an);hz=Math.sin(an);hl=1;}return [m[0]+hx/hl*len*.17,m[1]+len*.07,m[2]+hz/hl*len*.17];}
+function catmull(P,seg){var out=[];for(var i=0;i<P.length-1;i++){var p0=P[Math.max(0,i-1)],p1=P[i],p2=P[i+1],p3=P[Math.min(P.length-1,i+2)];for(var j=0;j<seg;j++){var k=j/seg,k2=k*k,k3=k2*k,q=[];for(var d=0;d<3;d++){q.push(.5*(2*p1[d]+(-p0[d]+p2[d])*k+(2*p0[d]-5*p1[d]+4*p2[d]-p3[d])*k2+(-p0[d]+3*p1[d]-3*p2[d]+p3[d])*k3));}out.push(q);}}out.push(P[P.length-1].slice());return out;}
+function along(P,u){var f=u*(P.length-1),i=Math.floor(f),k=f-i,a=P[i],b=P[Math.min(P.length-1,i+1)];return [a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,a[2]+(b[2]-a[2])*k];}
+
+var trunkPts=catmull(TRUNK.map(function(id){return byId[id].pos;}).concat([byId.h05.pos]),10);
+var EOBJ=[{type:'trunk',pts:trunkPts}];
+EDGES.forEach(function(e,i){var a=byId[e[0]].pos,b=byId[e[1]].pos,c=ctrl(a,b,i),pts=[];for(var k=0;k<=18;k++)pts.push(bez(a,c,b,k/18));EOBJ.push({type:e[2],pts:pts});});
+var ROOTS=[];for(var ri=0;ri<6;ri++){var ra=ri/6*Math.PI*2+.3,s1=byId.s1.pos,end=[s1[0]*.4+3.2*Math.cos(ra),-12.6,s1[2]*.4+3.2*Math.sin(ra)],cc=[(s1[0]+end[0])/2,-12.4,(s1[2]+end[2])/2],rp=[];for(var rk=0;rk<=12;rk++)rp.push(bez(s1,cc,end,rk/12));ROOTS.push(rp);}
+var PARTS=[];
+for(var pi=0;pi<12;pi++)PARTS.push({pts:trunkPts,ph:pi/12,v:.022,tok:'--fact',sz:1.8});
+EOBJ.forEach(function(e,i){if(e.type==='trunk')return;var n=e.type==='goal'?2:1,v={possible:.08,client:.14,future:.16,goal:.2,risk:.12,car:.08}[e.type],tk={possible:'--unknown',client:'--client',future:'--future',goal:'--goal',risk:'--risk',car:'--risk'}[e.type];for(var j=0;j<n;j++)PARTS.push({pts:e.pts,ph:(i*.37+j*.5)%1,v:v,tok:tk,sz:e.type==='goal'?2.4:1.9});});
+var STY={possible:{c:'--unknown',w:1.6,dash:[3,6],a:.85,v:14},client:{c:'--client',w:1.9,dash:[2,5],a:.95,v:12},future:{c:'--future',w:2,dash:[8,7],a:.9,v:20},goal:{c:'--goal',w:2.6,dash:[12,6],a:1,v:24},risk:{c:'--risk',w:1.8,dash:[5,6],a:.9,v:16},car:{c:'--risk',w:1.4,dash:[2,6],a:.65,v:10}};
+
+function proj(p){var x=p[0]-cam.tx,y=p[1]-cam.ty,z=p[2]-cam.tz,x1=x*cyy+z*syy,z1=-x*syy+z*cyy,y2=y*cpp-z1*spp,z2=y*spp+z1*cpp,d=cam.dist-z2;if(d<.6)return null;var s=F/d;return {x:W/2+x1*s,y:H/2-y2*s,s:s,d:d};}
+function fog(d){return clamp(1-(d-cam.dist)/20*.55,.4,1);}
+function strokePath(pp){ctx.beginPath();var on=false;for(var i=0;i<pp.length;i++){var q=pp[i];if(!q){on=false;continue;}if(!on){ctx.moveTo(q.x,q.y);on=true;}else ctx.lineTo(q.x,q.y);}ctx.stroke();}
+
+function drawNode(n){
+  var p=n.p;if(!p)return;var c=col(n),f=fog(p.d),r=n.size*1.25*p.s*(n.id===hoverId?1.18:1);n.r=r;
+  var shape=n.shape||({unknown:'ring',client:'dring',possible:'dring',future:'hollow',risk:'diamond'}[n.s])||'sphere';
+  ctx.save();ctx.globalAlpha=f;
+  var gs=r*((n.s==='now'||n.s==='goal')?8:5.2);ctx.drawImage(sprite(c),p.x-gs/2,p.y-gs/2,gs,gs);
+  if(n.s==='now'&&!reduce){for(var k=0;k<2;k++){var ph=(t*.55+k*.5)%1;ctx.beginPath();ctx.arc(p.x,p.y,r*(1.2+2.8*ph),0,Math.PI*2);ctx.strokeStyle=rgba(c,(1-ph)*.6);ctx.lineWidth=1.6;ctx.stroke();}}
+  if(shape==='sphere'){var gr=ctx.createRadialGradient(p.x-r*.35,p.y-r*.4,r*.1,p.x,p.y,r);gr.addColorStop(0,mix(c,'#ffffff',.55));gr.addColorStop(.6,c);gr.addColorStop(1,mix(c,'#000000',.35));ctx.fillStyle=gr;ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fill();}
+  else if(shape==='hollow'){ctx.fillStyle=rgba(c,.18);ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fill();ctx.strokeStyle=c;ctx.lineWidth=2;ctx.stroke();}
+  else if(shape==='ring'){ctx.fillStyle=rgba(C['--sheet'],.75);ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fill();ctx.strokeStyle=c;ctx.lineWidth=2.2;ctx.stroke();ctx.setLineDash([3,5]);ctx.lineDashOffset=reduce?0:-t*14;ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(p.x,p.y,r*1.55,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=c;ctx.font='600 '+Math.max(10,Math.round(r*1.15))+'px '+FONT;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('?',p.x,p.y+.5);}
+  else if(shape==='dring'){ctx.setLineDash([3,3]);ctx.strokeStyle=c;ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=c;ctx.beginPath();ctx.arc(p.x,p.y,r*.34,0,Math.PI*2);ctx.fill();}
+  else{var q=r*1.15;ctx.beginPath();ctx.moveTo(p.x,p.y-q);ctx.lineTo(p.x+q,p.y);ctx.lineTo(p.x,p.y+q);ctx.lineTo(p.x-q,p.y);ctx.closePath();
+    if(shape==='square'){ctx.fillStyle=rgba(C['--sheet'],.8);ctx.fill();ctx.strokeStyle=c;ctx.lineWidth=2.2;ctx.stroke();ctx.fillStyle=c;ctx.fillRect(p.x-q*.28,p.y-q*.28,q*.56,q*.56);}
+    else{var dg=ctx.createLinearGradient(p.x,p.y-q,p.x,p.y+q);dg.addColorStop(0,mix(c,'#ffffff',.4));dg.addColorStop(1,mix(c,'#000000',.3));ctx.fillStyle=dg;ctx.fill();}}
+  if(n.s==='issue'){ctx.strokeStyle=rgba(c,.9);ctx.lineWidth=1.3;ctx.beginPath();ctx.arc(p.x,p.y,r*1.5,0,Math.PI*2);ctx.stroke();}
+  if(n.s==='goal'){ctx.strokeStyle=rgba(c,.85);ctx.lineWidth=1.6;for(var j=0;j<10;j++){var an=(reduce?0:t*.25)+j*Math.PI/5;ctx.beginPath();ctx.moveTo(p.x+Math.cos(an)*r*1.35,p.y+Math.sin(an)*r*1.35);ctx.lineTo(p.x+Math.cos(an)*r*1.95,p.y+Math.sin(an)*r*1.95);ctx.stroke();}}
+  if(n.id===selectedId){ctx.globalAlpha=1;ctx.strokeStyle=C['--ink'];ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(p.x,p.y,r+6,0,Math.PI*2);ctx.stroke();}
+  ctx.restore();
+}
+
+function draw(){
+  cyy=Math.cos(cam.yaw);syy=Math.sin(cam.yaw);cpp=Math.cos(cam.pitch);spp=Math.sin(cam.pitch);
+  var bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,C['--scene']);bg.addColorStop(1,C['--scene-2']);ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  NODES.forEach(function(n){n.p=proj(n.pos);});
+  var pn=byId.now.p;if(pn){var R=Math.min(W,H)*.5,sg=ctx.createRadialGradient(pn.x,pn.y,0,pn.x,pn.y,R);sg.addColorStop(0,rgba(C['--stamp'],.16));sg.addColorStop(1,rgba(C['--stamp'],0));ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);}
+  ctx.lineWidth=1;
+  for(var Rr=3;Rr<=12;Rr+=3){var cp=[];for(var i=0;i<=72;i++){var a=i/72*Math.PI*2;cp.push(proj([Rr*Math.cos(a),-12.6,Rr*Math.sin(a)]));}ctx.strokeStyle=rgba(C['--ink-3'],Rr===12?.18:.26);strokePath(cp);}
+  for(var sp=0;sp<16;sp++){var aa=sp/16*Math.PI*2;ctx.strokeStyle=rgba(C['--ink-3'],.14);strokePath([proj([1.2*Math.cos(aa),-12.6,1.2*Math.sin(aa)]),proj([12*Math.cos(aa),-12.6,12*Math.sin(aa)])]);}
+  ROOTS.forEach(function(rp){var pp=rp.map(proj);ctx.lineCap='round';for(var i=0;i<pp.length-1;i++){var a=pp[i],b=pp[i+1];if(!a||!b)continue;ctx.strokeStyle=rgba(C['--ink-2'],.35*fog(a.d));ctx.lineWidth=Math.max(.8,(.14-.1*i/pp.length)*a.s);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}});
+  var es=EOBJ.map(function(e){var pp=e.pts.map(proj),d=0,c=0;pp.forEach(function(q){if(q){d+=q.d;c++;}});return {e:e,pp:pp,d:c?d/c:1e9};}).sort(function(a,b){return b.d-a.d;});
+  es.forEach(function(o){var e=o.e,pp=o.pp;
+    if(e.type==='trunk'){ctx.lineCap='round';var nn=pp.length;for(var i=0;i<nn-1;i++){var a=pp[i],b=pp[i+1];if(!a||!b)continue;ctx.strokeStyle=rgba(C['--ink-2'],.7*fog(a.d));ctx.lineWidth=Math.max(1.4,(.24-.15*i/nn)*a.s);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}return;}
+    var st=STY[e.type];ctx.save();ctx.globalAlpha=fog(o.d)*st.a;ctx.strokeStyle=C[st.c];ctx.lineWidth=st.w;ctx.lineCap='round';ctx.setLineDash(st.dash);ctx.lineDashOffset=reduce?0:-t*st.v;strokePath(pp);ctx.restore();});
+  if(!reduce){PARTS.forEach(function(pt){var u=(pt.ph+t*pt.v)%1,q=proj(along(pt.pts,u));if(!q)return;var c=C[pt.tok],f=fog(q.d),z=pt.sz*q.s/18;ctx.globalAlpha=f;var gs=z*7;ctx.drawImage(sprite(c),q.x-gs/2,q.y-gs/2,gs,gs);ctx.fillStyle=mix(c,'#ffffff',.35);ctx.beginPath();ctx.arc(q.x,q.y,Math.max(1.2,z),0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;});}
+  NODES.filter(function(n){return n.p;}).sort(function(a,b){return b.p.d-a.p.d;}).forEach(drawNode);
+  placeLabels();
+}
+
+/* подписи узлов */
+NODES.forEach(function(n){var b=document.createElement('button');b.type='button';b.className='nl';b.setAttribute('data-s',n.s);b.tabIndex=-1;b.innerHTML='<span class="d">'+esc(n.date)+'</span><span class="t">'+esc(n.title)+'</span>';
+  b.addEventListener('click',function(){select(n,true);});
+  b.addEventListener('mouseenter',function(){hoverId=n.id;dirty=true;});
+  b.addEventListener('mouseleave',function(){if(hoverId===n.id)hoverId=null;dirty=true;});
+  b.addEventListener('focus',function(){dirty=true;});
+  labelsEl.appendChild(b);n.el=b;n.lw=80;n.lh=30;});
+function measureLabels(){NODES.forEach(function(n){n.lw=n.el.offsetWidth||80;n.lh=n.el.offsetHeight||30;});}
+function hideL(n){n.el.style.visibility='hidden';n.el.tabIndex=-1;}
+function rank(n){return (n.id===selectedId?100:0)+(n.id===hoverId?50:0)+(document.activeElement===n.el?200:0)+n.pri;}
+function placeLabels(){
+  var minPri=W<560?6:0,placed=uiRects.slice();
+  NODES.forEach(function(n){if(!n.p)hideL(n);});
+  NODES.filter(function(n){return n.p;}).sort(function(a,b){return rank(b)-rank(a);}).forEach(function(n){
+    var must=n.id===selectedId||n.id===hoverId||document.activeElement===n.el;
+    if(!must&&n.pri<minPri){hideL(n);return;}
+    var g=n.r+9,cands=[[n.p.x+g,n.p.y-n.lh/2],[n.p.x-g-n.lw,n.p.y-n.lh/2],[n.p.x-n.lw/2,n.p.y-g-n.lh],[n.p.x-n.lw/2,n.p.y+g]],R=null;
+    for(var ci=0;ci<cands.length&&!R;ci++){var T={x:clamp(cands[ci][0],6,Math.max(6,W-n.lw-6)),y:clamp(cands[ci][1],6,Math.max(6,H-n.lh-6)),w:n.lw,h:n.lh};
+      if(!placed.some(function(q){return !(T.x+T.w<q.x||q.x+q.w<T.x||T.y+T.h<q.y||q.y+q.h<T.y);}))R=T;}
+    if(!R){if(!must){hideL(n);return;}R={x:clamp(cands[0][0],6,Math.max(6,W-n.lw-6)),y:clamp(cands[0][1],6,Math.max(6,H-n.lh-6)),w:n.lw,h:n.lh};}
+    placed.push(R);
+    n.el.style.transform='translate('+Math.round(R.x)+'px,'+Math.round(R.y)+'px)';
+    n.el.style.visibility='visible';n.el.style.opacity=String(fog(n.p.d));n.el.tabIndex=0;
+    n.el.classList.toggle('sel',n.id===selectedId);n.el.classList.toggle('hov',n.id===hoverId);
+  });
+}
+
+function resize(){var r=stage.getBoundingClientRect();W=Math.max(1,r.width);H=Math.max(1,r.height);var dpr=Math.min(window.devicePixelRatio||1,2);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);F=(H/2)/Math.tan(FOV/2);measureLabels();
+  uiRects=$$('.stage-ui .seg').map(function(el){var b=el.getBoundingClientRect();return {x:b.left-r.left-4,y:b.top-r.top-4,w:b.width+8,h:b.height+8};});dirty=true;}
+function goTo(dst,ms){if(reduce){Object.keys(dst).forEach(function(k){cam[k]=dst[k];});dirty=true;return;}var from={};Object.keys(dst).forEach(function(k){from[k]=cam[k];});tween={from:from,to:dst,t0:performance.now(),ms:ms||900};}
+function allView(){return W<560?{tx:0,ty:3.4,tz:0,dist:50,pitch:.2}:{tx:0,ty:1.4,tz:0,dist:44,pitch:.2};}
+function view(name){
+  if(name==='all')goTo(allView());
+  else if(name==='now'){var n=byId.now;select(n,false);goTo({tx:n.pos[0],ty:n.pos[1],tz:n.pos[2],dist:17,pitch:.16});}
+  else if(name==='next')goTo({tx:0,ty:9.6,tz:0,dist:W<560?30:24,pitch:.24});
+}
+function select(n,move){selectedId=n.id;renderPanel(n);dirty=true;
+  if(move){$$('.seg [data-view]').forEach(function(x){x.classList.remove('on');});goTo({tx:n.pos[0],ty:n.pos[1],tz:n.pos[2],dist:clamp(cam.dist,15,24)});}}
+function pick(mx,my){var best=null,bd=1e9;NODES.forEach(function(n){if(!n.p)return;var dx=mx-n.p.x,dy=my-n.p.y,hr=Math.max((n.r||8)+6,14);if(dx*dx+dy*dy<=hr*hr&&n.p.d<bd){bd=n.p.d;best=n;}});return best;}
+function zoom(k){goTo({dist:clamp(cam.dist*k,10,70)},320);lastInteract=performance.now();}
+
+function frame(ts){
+  requestAnimationFrame(frame);
+  if(!visible){lastTs=ts;return;}
+  var dt=Math.min(.05,Math.max(0,(ts-lastTs)/1000));lastTs=ts;
+  var anim=playing&&!reduce;
+  if(anim){t+=dt;if(ts-lastInteract>3500&&!drag&&!tween)cam.yaw+=dt*.11;}
+  if(tween){var k=Math.min(1,(ts-tween.t0)/tween.ms),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;Object.keys(tween.to).forEach(function(key){cam[key]=tween.from[key]+(tween.to[key]-tween.from[key])*e;});if(k>=1)tween=null;dirty=true;}
+  if(!anim&&!dirty)return;
+  dirty=false;draw();
+}
+
+function initTree(){
+  if(!ctx){$('#nogl').hidden=false;$('.stage-ui').hidden=true;$('.hint').hidden=true;renderPanel(byId.now);return;}
+  readTheme();resize();renderPanel(byId.now);
+  var av=allView();Object.keys(av).forEach(function(k){cam[k]=av[k];});
+  if(window.ResizeObserver)new ResizeObserver(resize).observe(stage);else window.addEventListener('resize',resize);
+  if(window.matchMedia){var mq=matchMedia('(prefers-color-scheme: dark)');if(mq.addEventListener)mq.addEventListener('change',readTheme);else if(mq.addListener)mq.addListener(readTheme);}
+  new MutationObserver(readTheme).observe(docEl,{attributes:true,attributeFilter:['data-theme','class']});
+  if(window.IntersectionObserver)new IntersectionObserver(function(es){visible=es[0].isIntersecting&&!document.hidden;dirty=true;}).observe(stage);
+  document.addEventListener('visibilitychange',function(){visible=!document.hidden;dirty=true;});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){measureLabels();dirty=true;});
+  cv.addEventListener('pointerdown',function(e){try{cv.focus({preventScroll:true});}catch(_){}drag={id:e.pointerId,x:e.clientX,y:e.clientY,yaw:cam.yaw,pitch:cam.pitch,moved:false};lastInteract=performance.now();});
+  cv.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
+    if(drag&&drag.id===e.pointerId){var dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!drag.moved&&Math.abs(dx)+Math.abs(dy)>4){drag.moved=true;tween=null;cv.classList.add('drag');try{cv.setPointerCapture(e.pointerId);}catch(_){}}
+      if(drag.moved){cam.yaw=drag.yaw-dx*.006;cam.pitch=clamp(drag.pitch+dy*.004,-.35,1.2);lastInteract=performance.now();dirty=true;}return;}
+    var n=pick(mx,my),id=n?n.id:null;if(id!==hoverId){hoverId=id;dirty=true;}cv.classList.toggle('hot',!!n);});
+  function endDrag(e){if(!drag)return;var r=cv.getBoundingClientRect();if(!drag.moved&&e.type==='pointerup'){var n=pick(e.clientX-r.left,e.clientY-r.top);if(n)select(n,true);}cv.classList.remove('drag');drag=null;lastInteract=performance.now();}
+  cv.addEventListener('pointerup',endDrag);cv.addEventListener('pointercancel',endDrag);
+  cv.addEventListener('pointerleave',function(){if(!drag){hoverId=null;cv.classList.remove('hot');dirty=true;}});
+  cv.addEventListener('wheel',function(e){if(document.activeElement!==cv&&!e.ctrlKey)return;e.preventDefault();tween=null;cam.dist=clamp(cam.dist*Math.exp(e.deltaY*.0012),10,70);lastInteract=performance.now();dirty=true;},{passive:false});
+  cv.addEventListener('keydown',function(e){var k=e.key;if(k==='ArrowLeft')cam.yaw-=.12;else if(k==='ArrowRight')cam.yaw+=.12;else if(k==='ArrowUp')cam.pitch=clamp(cam.pitch-.08,-.35,1.2);else if(k==='ArrowDown')cam.pitch=clamp(cam.pitch+.08,-.35,1.2);else if(k==='+'||k==='=')zoom(.85);else if(k==='-')zoom(1.18);else return;e.preventDefault();lastInteract=performance.now();dirty=true;});
+  $$('.seg [data-view]').forEach(function(b){b.addEventListener('click',function(){$$('.seg [data-view]').forEach(function(x){x.classList.toggle('on',x===b);});view(b.getAttribute('data-view'));lastInteract=performance.now();});});
+  $('#zin').addEventListener('click',function(){zoom(.8);});
+  $('#zout').addEventListener('click',function(){zoom(1.25);});
+  var pb=$('#play');function syncPlay(){pb.textContent=playing?'Пауза':'Пуск';pb.setAttribute('aria-pressed',String(!playing));}
+  syncPlay();pb.addEventListener('click',function(){playing=!playing;if(reduce&&playing){playing=false;}syncPlay();dirty=true;});
+  $('#tlist').addEventListener('click',function(e){var b=e.target.closest('[data-id]');if(!b)return;select(byId[b.getAttribute('data-id')],true);stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});});
+  requestAnimationFrame(frame);
+}
+initTree();
+
+/* ---------- чек-лист ---------- */
+var KEY='abank-site-todo-v1',saved={};
+try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(_){saved={};}
+$$('.todo input[type="checkbox"]').forEach(function(cb){var li=cb.closest('li');if(saved[cb.id]){cb.checked=true;li.classList.add('done');}
+  cb.addEventListener('change',function(){li.classList.toggle('done',cb.checked);saved[cb.id]=cb.checked;try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(_){}});});
+
+/* ---------- фильтр реестра ---------- */
+$$('.filt button').forEach(function(b){b.addEventListener('click',function(){var w=b.getAttribute('data-who');$$('.filt button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});$$('#regtable tbody tr').forEach(function(tr){tr.hidden=!(w==='all'||tr.getAttribute('data-who')===w);});});});
+
+/* ---------- подсказки на графиках ---------- */
+var tip=$('#tip');
+function showTip(text,x,y){tip.textContent=nb(text);tip.hidden=false;var w=tip.offsetWidth,h=tip.offsetHeight;tip.style.left=clamp(x+12,8,window.innerWidth-w-8)+'px';tip.style.top=clamp(y-h-10,8,window.innerHeight-h-8)+'px';}
+$$('[data-tip]').forEach(function(el){
+  el.addEventListener('pointerenter',function(e){showTip(el.getAttribute('data-tip'),e.clientX,e.clientY);});
+  el.addEventListener('pointermove',function(e){showTip(el.getAttribute('data-tip'),e.clientX,e.clientY);});
+  el.addEventListener('pointerleave',function(){tip.hidden=true;});
+  el.addEventListener('focus',function(){var b=el.getBoundingClientRect();showTip(el.getAttribute('data-tip'),b.left+b.width/2,b.top);});
+  el.addEventListener('blur',function(){tip.hidden=true;});
+});
+
+/* ---------- копирование пути ---------- */
+var cb=$('#copyvis');if(cb)cb.addEventListener('click',function(){var txt=$('#vispath').textContent;function sel(){var r=document.createRange();r.selectNodeContents($('#vispath'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){cb.textContent='Скопировано';},function(){sel();cb.textContent='Выделено — нажмите Ctrl+C';});}else{sel();cb.textContent='Выделено — нажмите Ctrl+C';}});
+})();
+</script>
